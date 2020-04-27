@@ -1,0 +1,23 @@
+@import "../../styles/theme.scss";
+
+$font-size: 200%;
+$font-weight: 700;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.pathogen {
+  color: $theme-white;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+.nix {
+  color: $redish;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
