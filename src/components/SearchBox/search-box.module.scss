@@ -4,7 +4,8 @@
 .searchBoxContainer {
   background-color: $theme-gray;
   border-radius: 4px;
-  width: fit-content;
+  // width: fit-content;
+  max-width: 500px;
 }
 
 .searchBoxGroup {
@@ -12,7 +13,7 @@
   align-items: center;
 
   input.searchBoxInput {
-    width: 400px;
+    width: 100%;
     color: $theme-black;
     border-radius: 0;
     border: none;
