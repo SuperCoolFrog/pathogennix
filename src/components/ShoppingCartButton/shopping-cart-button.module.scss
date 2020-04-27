@@ -1,0 +1,35 @@
+@import '../../styles/theme.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.iconContainer {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+
+.shoppingCartButton {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: $theme-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemCountContainer {
+  color:  $theme-white;
+  font-size: 20px;
+  line-height: 15px;
+}
+
+.subtotalContainer {
+  font-size: 14px;
+}

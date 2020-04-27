@@ -4,6 +4,7 @@ import styles from './app-header.module.scss';
 import SearchBox from '../SearchBox/SearchBox';
 import TopNav from '../TopNav/TopNav';
 import Logo from '../Logo/Logo';
+import ShoppingCartButton from '../ShoppingCartButton/ShoppingCartButton';
 
 const AppHeader = () => {
   return (<section className={classNames("pure-g", styles.appHeader)}>
@@ -19,7 +20,7 @@ const AppHeader = () => {
           <SearchBox />
         </div>
         <div className={"pure-u-1-6"}>
-          Cart
+          <ShoppingCartButton itemCount={0} onClick={() => {}} subtotal={0.00} />
         </div>
       </div>
     </div>
