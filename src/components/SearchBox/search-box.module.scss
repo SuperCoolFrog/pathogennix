@@ -11,9 +11,11 @@
   display: flex;
   align-items: center;
 
-  .searchBoxInput {
+  input.searchBoxInput {
     width: 400px;
     color: $theme-black;
+    border-radius: 0;
+    border: none;
   }
 
   label.searchBoxLabel {
