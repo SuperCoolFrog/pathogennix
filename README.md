@@ -1,44 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pathogennix
 
-## Available Scripts
+## Stories
 
-In the project directory, you can run:
+- [ ] Search Bar
+- [ ] Cart
+- [ ] Item List
+- [ ] Item Preview Page
+- [ ] Checkout Page
+- [ ] Footer
+- [ ] Parallax Header images
+- [ ] Purchase Details Page
+- [ ] Pick Up Location
+- [ ] Left Nav
+- [ ] Product Review
 
-### `npm start`
+## Search Bar Tasks
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [ ] Input that shows drop down of inventory
+- [ ] Click inventory item drop down item and redirect to item preview page
+- [ ] Bar should say "Products" before input
+- [ ] Should have magnifying glass after preview
+- [ ] Should search on enter
+  
+## Cart Tasks
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [ ] Show Cart Icon with number of items in cart
+- [ ] On Cart click show small modal with cart items and a _"proceed to checkout"_  button
+- [ ] On Proceed to checkout, navigated to checkout page
+- [ ] Show total in small modal
 
-### `npm test`
+## Item List Tasks
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ ] Should show a horizontal list of items
+- [ ] Should show title that's passed in
+- [ ] Should be able to scroll left or right on list
+- [ ] Items should have a small add to card button
+- [ ] Show Item Name
+- [ ] Items should show price
+- [ ] When click on item picture, should be taken to _"Item Preview Page"_
 
-### `npm run build`
+## Item Preview Page Tasks
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ] Show Larger image of item
+- [ ] Show Description of item
+- [ ] Show Additional Images of items
+- [ ] Add to cart button
+- [ ] Quantity Selection
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Checkout 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ ] Checkout Flow Front End
+     * Display Items, subtotal, calculated total, and delivery fee, _"Next Button"_ 
+     * Show Delivery or Pick Up Options, _"Next Button"_
+     * Enter Billing information, _"Next Button"_
+     * Validate Inventory and Checkout, _"Next Button"_
+     * Show Success Page, _"Close"_
 
-### `npm run eject`
+- [ ] Checkout Flow Back End
+    * Get Buy Intent function - Reserve Items during checkout
+    * Payment Succeeded - Unreserve Items, create purchase doc in db, send email
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Left Nav
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] May not be needed
