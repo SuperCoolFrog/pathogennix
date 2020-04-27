@@ -1,0 +1,34 @@
+@import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
+
+.searchBoxContainer {
+  background-color: $theme-gray;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.searchBoxGroup {
+  display: flex;
+  align-items: center;
+
+  .searchBoxInput {
+    width: 400px;
+    color: $theme-black;
+  }
+
+  label.searchBoxLabel {
+    color: $theme-black;
+    width: fit-content;
+    padding-left: 1em;
+    padding-right: .5em;
+    font-size: 14px;
+  }
+
+  .searchIconButton {
+    width: 40px;
+    color: $theme-primary;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+}

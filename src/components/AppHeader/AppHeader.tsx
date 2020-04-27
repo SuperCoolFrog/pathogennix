@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './app-header.module.scss';
+import SearchBox from '../SearchBox/SearchBox';
 
 const AppHeader = () => {
   return (<section className={classNames("pure-g", styles.appHeader)}>
@@ -9,7 +10,7 @@ const AppHeader = () => {
         <div className={"pure-u-1-12"}>NavBtn</div>
         <div className={"pure-u-1-4"}>Logo</div>
         <div className={"pure-u-1-2"}>
-          Search Bar
+          <SearchBox />
         </div>
         <div className={"pure-u-1-6"}>
           Cart
