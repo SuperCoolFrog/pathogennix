@@ -3,7 +3,7 @@ import { Redirect, Switch } from 'react-router-dom';
 import Route from './RouteWrapper';
 
 // import Inventory from '../features/Inventory/Inventory';
-// import Home from '../features/Home/Home';
+import Home from '../pages/Home/Home';
 // import Purchases from '../features/Purchases/Purchases';
 // import Help from '../features/Help/Help';
 // import Settings from '../features/Settings/Settings';
@@ -19,6 +19,7 @@ const Routes = () => (
       <Route path="/settings" component={Settings} isPrivate />
       <Route path="/sign-in" component={SignIn} />
    */}
+    <Route path="/" exact component={Home} isPrivate />
     <Redirect to="/" />
   </Switch>
 );
