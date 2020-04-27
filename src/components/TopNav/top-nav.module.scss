@@ -3,16 +3,18 @@
 
 .toggleButtonContainer {
   text-align: right;
+  margin-right: 1em;
 }
 
 
 .toggleButton {
   position: relative;
   background-color: transparent;
-  color: $theme-font-color;
-  width: 50px;
-  border: none;
+  color: $theme-white;
+  width: 38px;
+  border: 1px solid $theme-gray;
+  border-radius: 3px;
   outline: none;
   box-shadow: none;
-  padding: .75em;
+  padding: 8px;
 }

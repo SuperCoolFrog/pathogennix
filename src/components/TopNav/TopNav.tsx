@@ -16,19 +16,15 @@ const TopNav = ({ segment }: TopNavProps) => {
   };
 
   return (
-    <section className={styles.topNavContainer}>
-        <Nav segment={segment} isOpen={isOpen}>
-          <div className={styles.toggleButtonContainer}>
-            <button className={classNames(
-                styles.toggleButton,
-              )}
-              onClick={handleToggleClick}
-            >
-              <BarsIcon />
-            </button>
-          </div>
-        </Nav>
-    </section>
+    <div className={styles.toggleButtonContainer}>
+      <button className={classNames(
+          styles.toggleButton,
+        )}
+        onClick={handleToggleClick}
+      >
+        <BarsIcon />
+      </button>
+    </div>
   );
 };
 

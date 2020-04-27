@@ -2,12 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './app-header.module.scss';
 import SearchBox from '../SearchBox/SearchBox';
+import TopNav from '../TopNav/TopNav';
 
 const AppHeader = () => {
   return (<section className={classNames("pure-g", styles.appHeader)}>
     <div className={classNames("pure-u-1", styles.container)}>
       <div className="pure-g">
-        <div className={"pure-u-1-12"}>NavBtn</div>
+        <div className={"pure-u"}>
+          <TopNav segment="" />
+        </div>
         <div className={"pure-u-1-4"}>Logo</div>
         <div className={"pure-u-1-2"}>
           <SearchBox />
