@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-// import AppHeader from '../../components/AppHeader/AppHeader';
+import AppHeader from '../../components/AppHeader/AppHeader';
 import Nav from '../../components/Nav/Nav';
 import TopNav from '../../components/TopNav/TopNav';
 import styles from './layout.module.scss';
@@ -12,7 +12,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => (
   <main className={classNames("pure-g", styles.main)}>
     <section className="pure-u-1">
-      {/* <AppHeader /> */}
+      <AppHeader />
     </section>
     <section className={
       classNames("pure-u-md-1-4 pure-u-lg-1-6", styles.navContainer)

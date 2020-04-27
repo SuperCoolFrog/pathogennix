@@ -1,0 +1,10 @@
+@import "../../styles/theme.scss";
+
+.appHeader {
+  background-color: $theme-primary;
+  color: $theme-white;
+}
+
+.container {
+  margin: .5em;
+}

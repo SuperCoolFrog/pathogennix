@@ -26,7 +26,7 @@ const Nav = ({
   return (
     <section className={styles.navSectionContainer}>
       {children}
-      { showLinks && isOpen && (
+      {/* showLinks && isOpen && (
         <nav className={styles.navSection}>
           <ul className={styles.navList}>
             <li onClick={navigateTo('/')}>
@@ -46,7 +46,7 @@ const Nav = ({
             </li>
           </ul>
         </nav>
-      )}
+      ) */}
     </section>
   );
 };
