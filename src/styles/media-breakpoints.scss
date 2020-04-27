@@ -1,0 +1,15 @@
+@mixin for-pure-sm-width-up {
+  @media (min-width: 35.5em) { @content; }
+}
+
+@mixin for-pure-md-width-up {
+  @media (min-width: 48em) { @content; }
+}
+
+@mixin for-pure-lg-width-up {
+  @media (min-width: 64em) { @content; }
+}
+
+@mixin for-pure-xl-width-up {
+  @media (min-width: 80em) { @content; }
+}

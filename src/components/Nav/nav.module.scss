@@ -1,0 +1,43 @@
+@import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
+
+.navSectionContainer {
+    @include for-pure-sm-width-up {
+      height: 100%;
+    }
+
+    @include for-pure-md-width-up {
+      padding-top: 1.5em;
+    }
+}
+
+.navSection {
+    padding-bottom: .5em;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+}
+
+.navList li {
+    padding: .5em 0 .5em 3em;
+    cursor: pointer;
+}
+.navList li.selected {
+    color: $theme-primary;
+}
+
+.navList li:hover {
+ background-color: $theme-white;
+}
+
+.navList li a {
+    color: $theme-black;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navList li a i {
+    padding-right: .5em;
+}

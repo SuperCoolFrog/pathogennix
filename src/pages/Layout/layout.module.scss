@@ -1,0 +1,33 @@
+@import '../../styles/theme.scss';
+@import '../../styles/media-breakpoints.scss';
+
+.main {
+    height: 100vh;
+    overflow-y: hidden;
+    z-index: 1;
+    background-color: $theme-background;
+}
+
+.navContainer {
+    z-index: 1;
+    display: none;
+
+    @include for-pure-md-width-up {
+        height: 99%;
+        display: inline-block;
+    }
+}
+
+.topNavContainer {
+    z-index: 1;
+    display: inline-block;
+
+    @include for-pure-md-width-up {
+        display: none;
+    }
+}
+
+.contentContainer {
+    z-index: 0;
+    height: 95%;
+}
