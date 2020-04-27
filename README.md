@@ -16,15 +16,16 @@
 
 ## Search Bar Tasks
 
-- [ ] Input that shows drop down of inventory
+- [x] Input for search and styling
+- [ ] Input shows drop down of inventory
 - [ ] Click inventory item drop down item and redirect to item preview page
-- [ ] Bar should say "Products" before input
-- [ ] Should have magnifying glass after preview
+- [x] Bar should say "Products" before input
+- [x] Should have magnifying glass after preview
 - [ ] Should search on enter
   
 ## Cart Tasks
 
-- [ ] Show Cart Icon with number of items in cart
+- [x] Show Cart Icon with number of items in cart
 - [ ] On Cart click show small modal with cart items and a _"proceed to checkout"_  button
 - [ ] On Proceed to checkout, navigated to checkout page
 - [ ] Show total in small modal
@@ -63,4 +64,5 @@
 
 ## Left Nav
 
-- [ ] May not be needed
+- [ ] Burger Icon on Left
+- [ ] Open drawer with nav on left
