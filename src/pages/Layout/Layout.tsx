@@ -14,19 +14,7 @@ const Layout = ({ children }: LayoutProps) => (
     <section className="pure-u-1">
       <AppHeader />
     </section>
-    <section className={
-      classNames("pure-u-md-1-4 pure-u-lg-1-6", styles.navContainer)
-    }>
-      <Nav segment={''} isOpen={true}></Nav>
-    </section>
-    <section className={
-      classNames(
-        "pure-u-1 pure-u-md-1-4 pure-u-lg-1-6",
-        styles.topNavContainer
-      )}>
-      <TopNav segment={''}></TopNav>
-    </section>
-    <section className={classNames("pure-u-1 pure-u-md-3-4 pure-u-lg-5-6", styles.contentContainer)}>
+    <section className={classNames("pure-u-1", styles.contentContainer)}>
       {children}
     </section>
   </main>

@@ -26,8 +26,6 @@ const Home = () => {
         <ItemList header="Popular Items" items={inventoryItems} />
       </div>
     </div>
-    <div className={"pure-u-1"}>22222222222222222222</div>
-    <div className={"pure-u-1"}>33333333333333333333</div>
   </section>);
 };
 

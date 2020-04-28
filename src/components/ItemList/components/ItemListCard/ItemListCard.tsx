@@ -4,7 +4,9 @@ import styles from './item-list-card.module.scss';
 const ItemListCard = () => {
   return (<div className={styles.cardContainer}>
     <div className={styles.imageContainer}>
-      <img src="/mask.placeholder.png" className={styles.image} />
+      <a href="/">
+        <img src="/mask.placeholder.png" className={styles.image} />
+      </a>
     </div>
     <div className={styles.name}>
       <a href="/">Name</a>

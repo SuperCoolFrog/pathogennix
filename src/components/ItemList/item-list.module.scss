@@ -1,4 +1,21 @@
+@import "../../styles/theme.scss";
+
+.itemListContainer {
+  background: $theme-white;
+  padding: 1em;
+  border-radius: 3px;
+  overflow-x: scroll;
+}
+
 .itemsContainer {
   display: flex;
   justify-content: space-between;
+}
+
+.header {
+  font-size: 125%;
+  font-weight: 700;
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid $theme-secondary;
 }
