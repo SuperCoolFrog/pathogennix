@@ -13,17 +13,20 @@
 .drawer {
     position: absolute;
     top: 0;
-    min-width: 25vw;
-    max-width: 32em;
     height: 100%;
-    // max-height: calc(100vh - 4em);
     overflow: auto;
-    // transform: translate(-50%,-50%);
-    padding: 1em;
     border-radius: 0.2em;
     background: white;
     z-index: 9999;
-    overflow: visible;
+    overflow: hidden;
+    transition: 0.3s;
+    min-width: 0;
+    width: 0;
+    
+    &.open {
+      overflow: visible;
+      min-width: 25vw;
+    }
 
 
     &.left {
@@ -35,7 +38,8 @@
 
       .closeButton {
         position: relative;
-        right: -56px;
+        right: -40px;
+        top: 20px;
         width: 40px;
         height: 40px;
         background: $theme-white;
@@ -54,7 +58,8 @@
 
       .closeButton {
         position: relative;
-        right: 56px;
+        right: 40px;
+        top: 20px;
         width: 40px;
         height: 40px;
         background: $theme-white;
