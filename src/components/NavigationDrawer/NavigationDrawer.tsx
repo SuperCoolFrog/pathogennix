@@ -18,7 +18,7 @@ const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
     dispatch(closeDrawer());
   };
   
-  const renderBody = () => (<Nav segment="">
+  const renderBody = () => (<Nav>
     <div className={styles.logoContainer}>
       <Logo style2 />
     </div>
