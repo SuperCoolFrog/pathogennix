@@ -2,7 +2,7 @@
 @import '../../styles/media-breakpoints.scss';
 
 .main {
-    height: 100vh;
+    // height: 100vh;
     overflow-y: hidden;
     z-index: 1;
     background-color: $theme-background;
@@ -29,7 +29,5 @@
 
 .contentContainer {
     z-index: 0;
-    height: 92vh;
     overflow-y: auto;
-    margin-bottom: 5em;
 }
