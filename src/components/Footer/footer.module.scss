@@ -2,6 +2,24 @@
 
 .footerContainer {
   width: 100%;
-  background-color: $theme-primary;
+  background-color: $theme-dark;
   color: $theme-white;
+  disply: flex;
+  flex-direction: column;
+}
+
+.backToTopButton {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  color: $theme-white;
+  background-color: $theme-primary;
+  outline: none;
+  border: none;
+  padding: 1em 0;
+  
+  &:hover {
+    background-color: rgba($theme-primary, .50);
+
+  }
 }
