@@ -5,14 +5,12 @@ import styles from './nav.module.scss';
 interface NavProps {
   children?: React.ReactNode;
   segment: string; // route?
-  isOpen: boolean;
 }
 
 const HIDDEN_NAV_PATHNAMES = ['/sign-in', '/sign-up'];
 
 const Nav = ({
   children,
-  isOpen,
 }: NavProps) => {
   const history = useHistory();
   const location = useLocation();
@@ -26,27 +24,15 @@ const Nav = ({
   return (
     <section className={styles.navSectionContainer}>
       {children}
-      {/* showLinks && isOpen && (
+      {showLinks && (
         <nav className={styles.navSection}>
           <ul className={styles.navList}>
             <li onClick={navigateTo('/')}>
               Home
             </li>
-            <li onClick={navigateTo('/inventory')}>
-              Inventory
-            </li>
-            <li onClick={navigateTo('/purchases')}>
-              Purchases
-            </li>
-            <li onClick={navigateTo('/help')}>
-              Help
-            </li>
-            <li onClick={navigateTo('/settings')}>
-              Settings
-            </li>
           </ul>
         </nav>
-      ) */}
+      )}
     </section>
   );
 };

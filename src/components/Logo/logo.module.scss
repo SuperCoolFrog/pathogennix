@@ -9,16 +9,22 @@ $font-weight: 700;
   justify-content: center;
   height: 100%;
   cursor: pointer;
-}
 
-.pathogen {
-  color: $theme-white;
-  font-size: $font-size;
-  font-weight: $font-weight;
-}
+  .pathogen {
+    color: $theme-white;
+    font-size: $font-size;
+    font-weight: $font-weight;
+  }
 
-.nix {
-  color: $redish;
-  font-size: $font-size;
-  font-weight: $font-weight;
+  .nix {
+    color: $redish;
+    font-size: $font-size;
+    font-weight: $font-weight;
+  }
+  
+  &.style2 {
+    .pathogen {
+      color: $theme-dark;
+    }
+  }
 }
