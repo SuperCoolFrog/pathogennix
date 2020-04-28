@@ -1,5 +1,5 @@
 // import firebase from 'firebase';
-// import Item from '../models/Item';
+import InventoryItem from '../models/InventoryItem';
 // import { v4 as createUUID } from 'uuid';
 // import { default as FormField } from '../models/NewInventoryFormField.enum';
 // import HashMap from '../models/HashMap';
@@ -8,18 +8,39 @@
 // 
 // type SubscriptionId = string;
 // 
-// interface ItemsAPI {
-//   getInventory: () => Promise<Item[]>;
+interface ItemsAPI {
+  getInventory: () => Promise<InventoryItem[]>;
 //   subscribeToInventory: (itemsUpdated: itemsUpdatedHandler) => Promise<SubscriptionId>;
 //   unsubscribeFromInventory: (subscriptionId: string) => void;
 //   postNewInventory: (userId: string, form: HashMap<FormField, string | File>, imageUrl: string) => Promise<void>;
-// }
-// 
+}
+
 // type itemsUpdatedHandler = (items: Item[]) => void;
 // 
 // const SUBSCRIPTION_CACHE: Map<string, () => void> = new Map();
 // 
-// const itemsAPI: ItemsAPI = {
+const itemsAPI: ItemsAPI = {
+  getInventory: async () => {
+    const mockData: InventoryItem[] = [
+      { itemId: "1", active: true, category: "1", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 1", price: 1.11, quantity: 11, sku: "Blue",
+      },
+      { itemId: "2", active: true, category: "2", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 2", price: 2.22, quantity: 22, sku: "Blue",
+      },
+      { itemId: "3", active: true, category: "3", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 3", price: 3.33, quantity: 33, sku: "Blue",
+      },
+      { itemId: "4", active: true, category: "4", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 4", price: 4.44, quantity: 44, sku: "Blue",
+      },
+      { itemId: "5", active: true, category: "5", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 5", price: 5.55, quantity: 55, sku: "Blue",
+      },
+    ];
+    
+    return Promise.resolve(mockData);
+  }, 
 //   getInventory: async () => {
 //     const db = firebase.firestore();
 //     const itemsCollection = db.collection('items');
@@ -93,8 +114,6 @@
 //       deleted: false,
 //     }).then();
 //   },
-// };
-// 
-// export default itemsAPI;
+};
 
-export default {};
+export default itemsAPI;

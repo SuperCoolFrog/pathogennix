@@ -1,4 +1,4 @@
-interface Item {
+interface InventoryItem {
   itemId: string;
   sku: string;
   active: boolean;
@@ -11,4 +11,4 @@ interface Item {
   description: string;
 }
 
-export default Item;
+export default InventoryItem;

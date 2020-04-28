@@ -1,7 +1,7 @@
-import Item from './Item';
+import InventoryItem from './InventoryItem';
 
 interface Purchase {
-  items: Item[];
+  items: InventoryItem[];
   purchaserName: string;
   purchaserEmail: string;
   amount: number;

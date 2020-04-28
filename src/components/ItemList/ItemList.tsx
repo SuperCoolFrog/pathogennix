@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './item-list.module.scss';
-import Item from '../../models/Item';
+import InventoryItem from '../../models/InventoryItem';
 
 interface ItemListProps {
   header: string;
-  items?: Item[];
+  items?: InventoryItem[];
 }
 
 const ItemList = ({ header, items }: ItemListProps) => {

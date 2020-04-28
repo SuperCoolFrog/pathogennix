@@ -1,7 +1,7 @@
-// import { createSelector } from '@reduxjs/toolkit';
-// import { RootState } from '../root-reducer';
-// 
-// export const inventoryStateSelector = (state: RootState) => state.inventory;
+import { RootState } from '../root-reducer';
+//import { createSelector } from '@reduxjs/toolkit';
+
+export const inventoryStateSelector = (state: RootState) => state.inventory;
 // 
 // export const newInventoryModalIsVisibleSelector = createSelector(
 //   inventoryStateSelector,
@@ -18,5 +18,3 @@
 //   }),
 // );
 // 
-
-export default {};
