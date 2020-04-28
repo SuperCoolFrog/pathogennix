@@ -18,7 +18,7 @@ const Footer = () => {
         <header>About Us</header>
         <ul>
           <li>About</li>
-          <li>South Mountain Tech llc</li>
+          <li>South Mountain Technology llc</li>
         </ul>
       </div>
     </div>

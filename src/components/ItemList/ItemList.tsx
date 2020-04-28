@@ -9,14 +9,15 @@ interface ItemListProps {
 }
 
 const ItemList = ({ header, items }: ItemListProps) => {
-  return (<div className={styles.itemListContainer}>
+  return (<>
     <div className={styles.header}>{header}</div>
+    <div className={styles.itemListContainer}>
     <div className={styles.itemsContainer}>
       { items && items.length && items.map(() => (
         <Card />
       ))}
     </div>
-  </div>);
+  </div></>);
 };
 
 export default ItemList;

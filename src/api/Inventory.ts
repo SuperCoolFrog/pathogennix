@@ -37,6 +37,21 @@ const itemsAPI: ItemsAPI = {
       { itemId: "5", active: true, category: "5", created: new Date(), description: "Something Something",
         imageSrc: "", name: "Something 5", price: 5.55, quantity: 55, sku: "Blue",
       },
+      { itemId: "6", active: true, category: "6", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 6", price: 6.66, quantity: 66, sku: "Blue",
+      },
+      { itemId: "7", active: true, category: "7", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 7", price: 7.77, quantity: 77, sku: "Blue",
+      },
+      { itemId: "8", active: true, category: "8", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 8", price: 8.88, quantity: 88, sku: "Blue",
+      },
+      { itemId: "9", active: true, category: "9", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 9", price: 9.99, quantity: 99, sku: "Blue",
+      },
+      { itemId: "10", active: true, category: "10", created: new Date(), description: "Something Something",
+        imageSrc: "", name: "Something 10", price: 10.1010, quantity: 1010, sku: "Blue",
+      },
     ];
     
     return Promise.resolve(mockData);
