@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styles from './home.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { inventoryStateSelector } from '../../store/inventory/inventory-selector';
 import { getItems } from '../../store/inventory/inventory-thunks';
@@ -21,7 +22,9 @@ const Home = () => {
 
   return (<section className={"pure-g"}>
     <div className={"pure-u-1"}>
-      <ItemList header="Popular Items" items={inventoryItems} />
+      <div className={styles.itemListContainer}>
+        <ItemList header="Popular Items" items={inventoryItems} />
+      </div>
     </div>
     <div className={"pure-u-1"}>22222222222222222222</div>
     <div className={"pure-u-1"}>33333333333333333333</div>
