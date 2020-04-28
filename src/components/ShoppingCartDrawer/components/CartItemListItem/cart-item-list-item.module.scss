@@ -1,0 +1,22 @@
+@import "../../../../styles/theme.scss";
+
+.container {
+  margin: 1em 0;
+}
+
+.imageContainer {
+  padding: 0 1em;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: $theme-dark;
+  font-weight: bolder;
+  
+  .price {
+    margin-right: 45%;
+    margin-left: 2px;
+  }
+}

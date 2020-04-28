@@ -4,6 +4,7 @@ import Drawer from '../Drawer/Drawer';
 import { useDispatch } from 'react-redux';
 import shoppingCartSlice from '../../store/shopping-cart/shopping-cart-slice';
 import DrawerHeader from './components/ShoppingCartDrawerHeader/ShoppingCartDrawerHeader';
+import ShoppingCartItems from './components/ShoppingCartItems/ShoppingCartItems';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
   
   const renderBody = () => (<div>
     <DrawerHeader />
+    <ShoppingCartItems />
   </div>);
   
   return(<Drawer onClose={handleClose} renderBody={renderBody} open={isOpen} />);
