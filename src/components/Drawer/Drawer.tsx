@@ -18,7 +18,7 @@ const Drawer = ({
 
   return (
     <>
-    <div className={styles.drawerBackground}
+    <div className={classNames(styles.drawerBackground, { [styles.open]: open})}
          onClick={onClose}> </div>
     <div className={classNames(styles.drawer, { [styles.left]: left, [styles.right]: !left, [styles.open]: open})}
          role="dialog"

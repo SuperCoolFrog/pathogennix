@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import Nav from '../Nav/Nav';
 import styles from './top-nav.module.scss';
 import BarsIcon from '../Icons/BarsIcon';
+import navigationSlice from '../../store/navigation/navigation-slice';
 
 interface TopNavProps {
   segment: string;
 }
 
 const TopNav = ({ segment }: TopNavProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  
+  const { openDrawer } = navigationSlice.actions;
   
   const handleToggleClick = (event: React.FormEvent<HTMLButtonElement>) => {
-    setIsOpen(!isOpen);
+    dispatch(openDrawer());
   };
 
   return (
