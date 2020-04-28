@@ -4,7 +4,7 @@
   width: 100%;
   background-color: $theme-dark;
   color: $theme-white;
-  disply: flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -21,5 +21,24 @@
   &:hover {
     background-color: rgba($theme-primary, .50);
 
+  }
+}
+
+.footerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.footerContentColumn {
+  header {
+    font-weight: bolder;
+  }
+  
+  ul {
+    list-style: none;
+    padding: .5em .5em;
+    margin: 0;
   }
 }
