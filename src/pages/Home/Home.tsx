@@ -26,6 +26,16 @@ const Home = () => {
         <ItemList header="Popular Items" items={inventoryItems} />
       </div>
     </div>
+    <div className={"pure-u-1"}>
+      <div className={styles.itemListContainer}>
+        <ItemList header="Masks" items={inventoryItems} />
+      </div>
+    </div>
+    <div className={"pure-u-1"}>
+      <div className={styles.itemListContainer}>
+        <ItemList header="Sanitizer" items={inventoryItems} />
+      </div>
+    </div>
   </section>);
 };
 

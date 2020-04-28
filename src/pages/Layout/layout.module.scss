@@ -29,5 +29,7 @@
 
 .contentContainer {
     z-index: 0;
-    height: 95%;
+    height: 92vh;
+    overflow-y: auto;
+    margin-bottom: 5em;
 }
