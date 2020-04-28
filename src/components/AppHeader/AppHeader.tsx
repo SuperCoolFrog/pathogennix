@@ -20,7 +20,7 @@ const AppHeader = () => {
           <SearchBox />
         </div>
         <div className={"pure-u-1-6"}>
-          <ShoppingCartButton itemCount={0} onClick={() => {}} subtotal={0.00} />
+          <ShoppingCartButton itemCount={0} subtotal={0} />
         </div>
       </div>
     </div>
