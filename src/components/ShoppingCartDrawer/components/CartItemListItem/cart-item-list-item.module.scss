@@ -2,21 +2,105 @@
 
 .container {
   margin: 1em 0;
-}
 
-.imageContainer {
-  padding: 0 1em;
-}
+  .imageContainer {
+    padding: 0 1em;
+  }
 
-.priceContainer {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  color: $theme-dark;
-  font-weight: bolder;
+  .priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .price {
+      // margin-right: 45%;
+      // margin-left: 2px;
+      color: $theme-dark;
+      font-weight: bolder;
+    }
+  }
+
+  .details {
+    display: none;
+  }
   
-  .price {
-    margin-right: 45%;
-    margin-left: 2px;
+  
+  &:hover {
+    
+    .imageContainerContainer {
+      width: 40%;  
+    }
+
+    .priceContainer {
+      height: 75%;  
+    }
+    
+    .details {
+      display: block;
+    }
+    
   }
 }
+
+.detailsContainer {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.itemName {
+  font-size: 14px;
+  color: $theme-secondary;
+}
+
+.quantity {
+  display: inline-block;
+  margin-right: 2em;
+  background: $theme-gray;
+  border-radius: 3px;
+  padding: 1px 0;
+  
+  button {
+    border: none;
+    outline: none;
+    background: transparent;   
+  }
+
+  .quantityInput {
+    width: 40px;
+  }
+}
+.delete {
+  display: inline-block;
+
+  .deleteButton {
+    background: transparent;   
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: $theme-primary;
+    text-decoration: underline;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

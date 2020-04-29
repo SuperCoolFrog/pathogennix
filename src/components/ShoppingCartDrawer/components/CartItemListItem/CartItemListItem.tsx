@@ -16,8 +16,19 @@ const CartItemListItem = ({ item }: CartItemListItemProps) => {
     </div>
     <div className={classNames("pure-u-1 pure-u-md-1-2", styles.priceContainer)}>
       <span className={styles.price}>
-        {item.price}
-      </span>$
+        ${item.price}
+      </span>
+      <span className={classNames(styles.itemName, styles.details)}>{item.itemName}</span>
+    </div>
+    <div className={classNames("pure-u-1", styles.detailsContainer, styles.details)}>
+      <div className={styles.quantity}>
+        <button className={styles.minusButton}>-</button>
+        <input type="number" min="1" className={styles.quantityInput} />
+        <button className={styles.plusButton}>+</button>
+      </div>
+      <div className={styles.delete}>
+        <button className={styles.deleteButton}>delete</button>
+      </div>
     </div>
   </div>);
 };
