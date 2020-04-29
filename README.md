@@ -7,11 +7,11 @@
 - [ ] Item List
 - [ ] Item Preview Page
 - [ ] Checkout Page
-- [ ] Footer
+- [x] Footer
 - [ ] Parallax Header images
 - [ ] Purchase Details Page
 - [ ] Pick Up Location
-- [ ] Left Nav
+- [x] Left Nav
 - [ ] Product Review
 
 ## Search Bar Tasks
@@ -26,18 +26,18 @@
 ## Cart Tasks
 
 - [x] Show Cart Icon with number of items in cart
-- [ ] On Cart click show small modal with cart items and a _"proceed to checkout"_  button
+- [x] On Cart click show small modal with cart items and a _"proceed to checkout"_  button
 - [ ] On Proceed to checkout, navigated to checkout page
-- [ ] Show total in small modal
+- [x] Show total in small modal
 
 ## Item List Tasks
 
-- [ ] Should show a horizontal list of items
-- [ ] Should show title that's passed in
-- [ ] Should be able to scroll left or right on list
-- [ ] Items should have a small add to card button
-- [ ] Show Item Name
-- [ ] Items should show price
+- [x] Should show a horizontal list of items
+- [x] Should show title that's passed in
+- [x] Should be able to scroll left or right on list
+- [x] ~Items should have a small add to card button~
+- [x] Show Item Name
+- [x] Items should show price
 - [ ] When click on item picture, should be taken to _"Item Preview Page"_
 
 ## Item Preview Page Tasks
@@ -64,5 +64,5 @@
 
 ## Left Nav
 
-- [ ] Burger Icon on Left
-- [ ] Open drawer with nav on left
+- [x] Burger Icon on Left
+- [x] Open drawer with nav on left
