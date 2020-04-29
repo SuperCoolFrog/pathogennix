@@ -15,15 +15,18 @@ const CartItemListItem = ({ item }: CartItemListItemProps) => {
       </div>
     </div>
     <div className={classNames("pure-u-1 pure-u-md-1-2", styles.priceContainer)}>
-      <span className={styles.price}>
-        ${item.price}
-      </span>
+      <div>
+        <span className={styles.price}>
+          ${item.price}
+        </span>
+        <span className={styles.priceQuantity}>(x1)</span>
+      </div>
       <span className={classNames(styles.itemName, styles.details)}>{item.itemName}</span>
     </div>
     <div className={classNames("pure-u-1", styles.detailsContainer, styles.details)}>
       <div className={styles.quantity}>
         <button className={styles.minusButton}>-</button>
-        <input type="number" min="1" className={styles.quantityInput} />
+        <input min="1" className={styles.quantityInput} />
         <button className={styles.plusButton}>+</button>
       </div>
       <div className={styles.delete}>

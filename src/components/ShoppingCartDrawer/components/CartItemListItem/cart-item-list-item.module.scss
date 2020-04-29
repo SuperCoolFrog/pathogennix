@@ -18,6 +18,11 @@
       color: $theme-dark;
       font-weight: bolder;
     }
+    
+    .priceQuantity {
+      color: $theme-secondary;
+      margin-left: 3px;
+    }
   }
 
   .details {
@@ -26,6 +31,7 @@
   
   
   &:hover {
+    border-left: 3px solid $theme-accent;
     
     .imageContainerContainer {
       width: 40%;  
@@ -54,7 +60,7 @@
 
 .quantity {
   display: inline-block;
-  margin-right: 2em;
+  margin-right: 1em;
   background: $theme-gray;
   border-radius: 3px;
   padding: 1px 0;
@@ -63,6 +69,7 @@
     border: none;
     outline: none;
     background: transparent;   
+    width: 30px;
   }
 
   .quantityInput {

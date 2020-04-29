@@ -19,8 +19,12 @@ const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
   };
   
   const renderBody = () => (<div>
-    <DrawerHeader />
-    <ShoppingCartItems />
+    <div className={styles.headerContainer}>
+      <DrawerHeader />
+    </div>
+    <div className={styles.cartItemsContainer}>
+      <ShoppingCartItems />
+    </div>
   </div>);
   
   return(<Drawer onClose={handleClose} renderBody={renderBody} open={isOpen} />);
