@@ -1,0 +1,59 @@
+@import "../../styles/theme.scss";
+
+.detailsContainer {
+  padding: 1em;
+  margin: auto;
+  max-width: 1200px;
+  min-height: 75vh;
+}
+
+.detailsCard {
+  background-color: $theme-white;
+}
+
+.imageContainer {
+  padding: 1em;
+}
+
+.rightContainer {
+  position: relative;
+}
+
+.detailsHeader {
+  color: $theme-primary;
+  padding-left: 1em;
+}
+
+.subDetailsHeader {
+  padding-left: 1em;
+  padding-bottom: 3.5em;
+  
+  .inStockText {
+    color: $theme-green;
+    font-weight: 700;
+  }
+
+  .outOfStockText {
+    color: $redish;
+    font-weight: 700;
+  }
+}
+
+.actionsContainer {
+  padding-bottom: 1em;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  .addToCart {
+    margin-right: 1em;
+    background-color: $theme-accent; 
+    color: $theme-black;
+    outline: none;
+    border: 0;
+    padding: .5em 1.5em;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}

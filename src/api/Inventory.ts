@@ -23,7 +23,7 @@ const itemsAPI: ItemsAPI = {
   getInventory: async () => {
     const mockData: InventoryItem[] = [
       { itemId: "1", active: true, category: "1", created: new Date(), description: "Something Something",
-        imageSrc: "", itemName: "Something 1", price: 1.11, quantity: 11, sku: "Blue",
+        imageSrc: "/mask.placeholder.png", itemName: "Something 1", price: 1.11, quantity: 11, sku: "Blue",
       },
       { itemId: "2", active: true, category: "2", created: new Date(), description: "Something Something",
         imageSrc: "", itemName: "Something 2", price: 2.22, quantity: 22, sku: "Blue",
