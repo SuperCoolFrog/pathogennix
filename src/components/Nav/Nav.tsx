@@ -15,8 +15,6 @@ const Nav = ({
   const history = useHistory();
   const location = useLocation();
   
-  console.log('LOCATION', location);
-
   const showLinks = !(HIDDEN_NAV_PATHNAMES.indexOf(location.pathname) > -1);
 
   const navigateTo = (path: string) => (ev: React.FormEvent) => {

@@ -57,3 +57,16 @@
     border-radius: 5px;
   }
 }
+
+.quantityLabel {
+  margin-right: 1em;
+  padding: 2px 2px 2px 5px;
+  border-radius: 3px;
+  background-color: $theme-gray;
+  display: inline-block;
+}
+
+.quantityInput {
+  width: 100px;
+  margin-left: 5px;
+}

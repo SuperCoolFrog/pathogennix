@@ -42,10 +42,10 @@
 
 ## Item Preview Page Tasks
 
-- [ ] Show Larger image of item
-- [ ] Show Description of item
+- [x] Show Larger image of item
+- [x] Show Description of item
 - [ ] Show Additional Images of items
-- [ ] Add to cart button
+- [x] Add to cart button
 - [ ] Quantity Selection
 
 ## Checkout 

@@ -47,6 +47,10 @@ const Details = () => {
               <p className={styles.description}>{item?.description}</p>
             </section>
             <section className={styles.actionsContainer}>
+              <label className={styles.quantityLabel}>
+                Quantity
+                <input type="number" min="1" className={styles.quantityInput} />
+              </label>
               <button className={styles.addToCart}>Add to Cart</button>
             </section>
           </div>
