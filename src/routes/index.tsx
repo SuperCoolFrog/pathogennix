@@ -5,6 +5,7 @@ import Route from './RouteWrapper';
 import Home from '../pages/Home/Home';
 import Details from '../pages/Details/Details';
 import Checkout from '../pages/Checkout/Checkout';
+import BillingInfo from '../pages/BillingInfo/BillingInfo';
 
 const Routes = () => (
   <Switch>
@@ -18,6 +19,7 @@ const Routes = () => (
    */}
     <Route path="/" exact component={Home} isPrivate />
     <Route path="/checkout" exact component={Checkout} isPrivate />
+    <Route path="/billing-info" exact component={BillingInfo} isPrivate />
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Redirect to="/" />
   </Switch>

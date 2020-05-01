@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import styles from './checkout.module.scss';
+import styles from './billing-info.module.scss';
 import Footer from '../../components/Footer/Footer';
-import ReviewCart from '../../components/ReviewCart/ReviewCart';
+import BillingInfoContent from '../../components/BillingInfo/BillingInfo';
 
-const Checkout = () => {
+const BillingInfo = () => {
   return (<section className={"pure-g"}>
     <div className={"pure-u-1"}>
-      <div className={styles.checkoutContainer}>
-        <ReviewCart />
+      <div className={styles.billingInfoContainer}>
+        <BillingInfoContent />
       </div>
     </div>
     <div className={"pure-u-1"}>
@@ -16,4 +16,4 @@ const Checkout = () => {
   </section>);
 };
 
-export default Checkout;
+export default BillingInfo;

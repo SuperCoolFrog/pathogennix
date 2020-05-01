@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '../../../Icons/ShoppingCartIcon';
 import styles from './shopping-cart-drawer-header.module.scss';
 
@@ -14,7 +15,7 @@ const ShoppingCartDrawerHeader = () => {
         <span className={styles.subtotal}>$1.00</span>
       </div>
       <div className={styles.checkoutButtonContainer}>
-        <a href="/checkout" className={styles.checkoutButton}>Proceed to Checkout</a>
+        <Link to="/checkout" className={styles.checkoutButton}>Proceed to Checkout</Link>
       </div>
     </div>
   );

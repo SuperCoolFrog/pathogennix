@@ -1,4 +1,8 @@
-@import "../../../../styles/theme.scss";
+@import "../../styles/theme.scss";
+
+.cardContainer {
+  background: $theme-white;
+}
 
 .header {
   padding-left: 2em;
@@ -30,11 +34,12 @@
 }
 
 .billingButtonContainer {
-  padding: .5em 0 .5em 0;
+  padding: 1em 0 1em 0;
   text-align: center;
   
   .billingButton {
     background-color: $theme-accent; 
+    text-decoration: none;
     color: $theme-black;
     outline: none;
     border: 0;

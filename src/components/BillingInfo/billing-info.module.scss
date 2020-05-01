@@ -1,0 +1,10 @@
+@import "../../styles/theme.scss";
+
+.header {
+  padding-left: 2em;
+  color: $theme-dark;
+}
+
+.contentContainer {
+  border-right: 1px solid $theme-gray;
+}
