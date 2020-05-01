@@ -1,0 +1,83 @@
+@import "../../../../styles/theme.scss";
+
+.itemDetailsContainer {
+  padding: 1em;
+  margin: auto;
+  max-width: 1200px;
+  min-height: 75vh;
+}
+
+.rightContainer {
+  header,section {
+    padding-left: 1em;
+  }
+}
+
+.detailsCard {
+  background-color: $theme-white;
+}
+
+.imageContainer {
+  padding: 1em;
+}
+
+.rightContainer {
+  position: relative;
+}
+
+.detailsHeader {
+  color: $theme-primary;
+  padding-left: 1em;
+  font-weight: 600;
+  font-size: 125%;
+}
+
+.subDetailsHeader {
+  padding-left: 1em;
+  padding-bottom: 3.5em;
+}
+
+.actionsContainer {
+  padding-bottom: 1em;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  .addToCart {
+    margin-right: 1em;
+    background-color: $theme-accent; 
+    color: $theme-black;
+    outline: none;
+    border: 0;
+    padding: .5em 1.5em;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}
+
+.quantityLabel {
+  margin-right: 1em;
+  padding: 2px 2px 2px 5px;
+  border-radius: 3px;
+  background-color: $theme-gray;
+  display: inline-block;
+}
+
+.quantityInput {
+  width: 100px;
+  margin-left: 5px;
+}
+
+.deleteButton {
+  background: transparent;   
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: $theme-primary;
+  text-decoration: underline;
+}
+
+.ruleContainer {
+  padding: 0 1em;
+}
