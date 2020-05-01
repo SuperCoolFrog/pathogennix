@@ -42,7 +42,7 @@ interface ReviewCartProps extends WizardStepBaseProps {}
 
 const ReviewCart = ({ onNextClick, onPrevClick, isActive }: ReviewCartProps) => {
   
-  const items = demoItems;
+  const items = [] as InventoryItem[];
   
   return (<section className={styles.reviewCartContainer}>
     <header className={styles.header}>
@@ -54,6 +54,7 @@ const ReviewCart = ({ onNextClick, onPrevClick, isActive }: ReviewCartProps) => 
           {items.map(item => (
             <ItemDetailsRow item={item} />
           ))}
+          {!(items && items.length) && <p className={styles.noItems}>No Items have been added to your cart.</p>}
         </div>
       </div>
       <div className={"pure-u-1-3"}>

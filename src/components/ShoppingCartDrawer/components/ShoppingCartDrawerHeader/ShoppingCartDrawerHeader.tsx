@@ -14,7 +14,7 @@ const ShoppingCartDrawerHeader = () => {
         <span className={styles.subtotal}>$1.00</span>
       </div>
       <div className={styles.checkoutButtonContainer}>
-        <button className={styles.checkoutButton}>Proceed to Checkout</button>
+        <a href="/checkout" className={styles.checkoutButton}>Proceed to Checkout</a>
       </div>
     </div>
   );

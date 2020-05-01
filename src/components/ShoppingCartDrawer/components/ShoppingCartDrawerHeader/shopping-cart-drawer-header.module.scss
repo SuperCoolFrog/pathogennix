@@ -37,11 +37,12 @@
 }
 
 .checkoutButtonContainer {
-  padding: .5em 0 .5em 0;
+  padding: 1em 0 1em 0;
   text-align: center;
   
   .checkoutButton {
     background-color: $theme-accent; 
+    text-decoration: none;
     color: $theme-black;
     outline: none;
     border: 0;
