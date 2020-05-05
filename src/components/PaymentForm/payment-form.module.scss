@@ -1,10 +1,17 @@
+@import "../../styles/theme.scss";
+
 .form {
   input {
     width: 90%;
+
+    &.input95 {
+      width: 95%
+    }
   }
-  
-  label {
-    display: none;
+
+  fieldset legend {
+    font-size: 90%;
+    color: $theme-secondary;
   }
 }
 

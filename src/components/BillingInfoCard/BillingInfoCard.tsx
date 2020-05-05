@@ -7,7 +7,7 @@ const ReviewCart = () => {
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
     <section>
       <header className={styles.header}>
-        <h2>Billing Info</h2>
+        <h2>Billing and Shipping</h2>
       </header>
     </section>
     <div className={"pure-g"}>
