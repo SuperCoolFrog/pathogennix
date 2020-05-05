@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import styles from './billing-info.module.scss';
 import Footer from '../../components/Footer/Footer';
-import BillingInfoContent from '../../components/BillingInfo/BillingInfo';
+import BillingInfoCard from '../../components/BillingInfoCard/BillingInfoCard';
 
 const BillingInfo = () => {
   return (<section className={"pure-g"}>
     <div className={"pure-u-1"}>
       <div className={styles.billingInfoContainer}>
-        <BillingInfoContent />
+        <BillingInfoCard />
       </div>
     </div>
     <div className={"pure-u-1"}>

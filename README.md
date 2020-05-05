@@ -3,7 +3,7 @@
 ## Stories
 
 - [ ] Search Bar
-- [ ] Cart
+- [x] Cart
 - [ ] Item List
 - [ ] Item Preview Page
 - [ ] Checkout Page
@@ -27,7 +27,7 @@
 
 - [x] Show Cart Icon with number of items in cart
 - [x] On Cart click show small modal with cart items and a _"proceed to checkout"_  button
-- [ ] On Proceed to checkout, navigated to checkout page
+- [x] On Proceed to checkout, navigated to checkout page
 - [x] Show total in small modal
 
 ## Item List Tasks

@@ -1,6 +1,6 @@
 // import * as firebase from 'firebase';
 // import paymentsAPI from './Payments';
-// import configAPI from './Config';
+import configAPI from './Config';
 import inventoryAPI from './Inventory';
 // import authAPI from './Auth';
 // import storageAPI from './Storage';
@@ -20,7 +20,7 @@ import inventoryAPI from './Inventory';
 
 const api = {
 //   auth: authAPI,
-//   configs: configAPI,
+  configs: configAPI,
   inventory: inventoryAPI,
 //   payments:  paymentsAPI,
 //   storage: storageAPI,

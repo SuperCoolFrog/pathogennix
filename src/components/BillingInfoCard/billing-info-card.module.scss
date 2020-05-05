@@ -1,5 +1,9 @@
 @import "../../styles/theme.scss";
 
+.cardContainer {
+  background: $theme-white;
+}
+
 .header {
   padding-left: 2em;
   color: $theme-dark;
@@ -7,4 +11,5 @@
 
 .contentContainer {
   border-right: 1px solid $theme-gray;
+  padding: 0 1em;
 }

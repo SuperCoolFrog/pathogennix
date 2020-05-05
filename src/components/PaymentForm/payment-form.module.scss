@@ -1,0 +1,59 @@
+.form {
+  input {
+    width: 90%;
+  }
+  
+  label {
+    display: none;
+  }
+}
+
+/* These styles were mostly copied from pure-input styles */
+.cardElement {
+    display: block;
+    margin: .25em 0;
+    padding: .5em .6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 3px #ddd;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.padRight {
+    padding-right: .5em;
+}
+
+.paymentFieldset label {
+    display: none;
+}
+
+/* Always show */
+.paymentFieldset label.cardElementLabel {
+    display: block;
+    font-size: 75%;
+}
+
+@media (min-width: 48em) {
+    .paymentFieldset label {
+        display: block;
+    }
+    .paymentFieldset label.cardElementLabel {
+        font-size: 100%;
+    }
+}
+
+
+.actionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actionsContainer button[type=submit]{
+    margin: 0;
+}
