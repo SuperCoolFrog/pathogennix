@@ -41,8 +41,10 @@ const Details = () => {
               <h1>{item?.itemName}</h1>
             </header>
             <section className={styles.subDetailsHeader}>
-              <div className={styles.inStockText}>In Stock</div>
-              <div className={styles.outOfStockText}>Out of Stock</div>
+              { (item.quantity > 0)
+                ? (<div className={styles.inStockText}>In Stock</div>)
+                : (<div className={styles.outOfStockText}>Out of Stock</div>)
+              }
               <hr />
               <p className={styles.description}>{item?.description}</p>
             </section>
