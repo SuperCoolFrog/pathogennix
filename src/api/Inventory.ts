@@ -1,5 +1,5 @@
 // import firebase from 'firebase';
-import InventoryItem from '../models/InventoryItem';
+import InventoryItem, { parseInventoryItem } from '../models/InventoryItem';
 // import { v4 as createUUID } from 'uuid';
 // import { default as FormField } from '../models/NewInventoryFormField.enum';
 // import HashMap from '../models/HashMap';
@@ -39,8 +39,8 @@ class ItemsAPI {
     const url = `${this.endpoint}/fetchInventoryItems`;
     const body = JSON.stringify({externalAppKey: this.externalAppKey});
     const response = await fetch(url, { method: 'POST', body });
-    const inventory = await response.json();
-    return inventory as InventoryItem[];
+    const inventoryJSON = await response.json();
+    return inventoryJSON.map((jsonItem: any) => parseInventoryItem(jsonItem));
   }
 }
 

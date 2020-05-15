@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './item-list-card.module.scss';
 import InventoryItem from '../../../../models/InventoryItem';
+import { asPriceString } from '../../../../helpers/helpers';
 
 interface ItemListCardProps {
   item: InventoryItem;
@@ -20,7 +21,7 @@ const ItemListCard = ({ item }: ItemListCardProps) => {
       </Link>
     </div>
     <div className={styles.price}>
-      {item.price}
+      ${asPriceString(item.price)}
     </div>
   </div>);
 };
