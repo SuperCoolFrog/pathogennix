@@ -24,6 +24,16 @@ const shoppingCartSlice = createSlice({
     closeDrawer(state) {
       state.drawerIsOpen = false;
     },
+    addCartItemQuantity(state, action: PayloadAction<ShoppingCartItem>) {
+      const nuCartItem = action.payload;
+      const existingCartItem = state.cartItems.find(item => item.inventoryItem.itemId === nuCartItem.inventoryItem.itemId);
+
+      if (existingCartItem) {
+        existingCartItem.quantityToBuy += nuCartItem.quantityToBuy;
+      } else {
+        state.cartItems.push(nuCartItem);
+      }
+    },
     updateCartItemQuantity(state, action: PayloadAction<ShoppingCartItem>) {
       const nuCartItem = action.payload;
       const existingCartItem = state.cartItems.find(item => item.inventoryItem.itemId === nuCartItem.inventoryItem.itemId);
