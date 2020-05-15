@@ -46,7 +46,7 @@ const SearchResultsContainer = () => {
     <div className={"pure-g"}>
       <div className={"pure-u-1"}>
         <div className={styles.contentContainer}>
-          {hasFetchedInventory && filteredItems.map(item => (<ListItem item={item} />))}
+          {hasFetchedInventory && filteredItems.map(item => (<ListItem item={item} key={item.itemId} />))}
           {isLoadingInventory && <LoadingWithOverlay contained />}
         </div>
       </div>
