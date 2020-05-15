@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './item-list-card.module.scss';
 import InventoryItem from '../../../../models/InventoryItem';
@@ -22,6 +23,9 @@ const ItemListCard = ({ item }: ItemListCardProps) => {
     </div>
     <div className={styles.price}>
       ${asPriceString(item.price)}
+    </div>
+    <div className={styles.addToCartContainer}>
+      <button className={classNames("pure-button", styles.addToCartButton)}>Add to Cart</button>
     </div>
   </div>);
 };

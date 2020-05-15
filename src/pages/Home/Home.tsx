@@ -26,17 +26,17 @@ const Home = () => {
       <div className={"pure-g"}>
         <div className={"pure-u-1"}>
           <div className={styles.itemListContainer}>
-            <ItemList header="Popular Items" items={inventoryItems} />
+            <ItemList header="Popular Items" items={inventoryItems} isLoading={isLoadingInventory} />
           </div>
         </div>
         <div className={"pure-u-1"}>
           <div className={styles.itemListContainer}>
-            <ItemList header="Masks" items={inventoryItems} />
+            <ItemList header="Masks" items={inventoryItems} isLoading={isLoadingInventory} />
           </div>
         </div>
         <div className={"pure-u-1"}>
           <div className={styles.itemListContainer}>
-            <ItemList header="Sanitizer" items={inventoryItems} />
+            <ItemList header="Sanitizer" items={inventoryItems} isLoading={isLoadingInventory} />
           </div>
         </div>
       </div>

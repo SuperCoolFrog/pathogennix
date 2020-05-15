@@ -5,8 +5,8 @@
 }
 
 .imageContainer {
-  width: 160px;
-  height: 125px;
+  width: 130px;
+  height: 100px;
   padding: 5px;
 
   .image {
@@ -17,6 +17,7 @@
 
 
 .name {
+  text-align: center;
   a, a:visited {
     color: $theme-primary;
     font-size: 16px;
@@ -30,6 +31,19 @@
 }
 
 .price {
+  text-align: center;
   color: $redish;
   font-size: 16px;
+}
+
+.addToCartContainer {
+   padding-top: 5px;
+   text-align: center;
+
+  .addToCartButton {
+    background: lighten($theme-accent, 10%);   
+    width: 90%;
+    font-weight: 600;
+    border-radius: 5px;
+  }
 }
