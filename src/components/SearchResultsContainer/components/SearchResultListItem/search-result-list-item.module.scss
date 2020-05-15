@@ -1,0 +1,91 @@
+@import "../../../../styles/theme.scss";
+@import "../../../../styles/media-breakpoints.scss";
+
+.detailsContainer {
+  border-bottom: 1px solid $theme-secondary;
+  margin: .5em 1em;
+  padding-bottom: 1em;
+  
+  @include for-pure-md-width-up {
+    border-bottom: none;
+  }
+}
+
+.detailsCard {
+}
+
+.imageContainer {
+  width: 160px;
+  height: 125px;
+  padding: 5px;
+
+  .image {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+.rightContainer {
+  position: relative;
+}
+
+.detailsHeader {
+  padding-left: 1em;
+  text-decoration: none;
+  
+  h3 {
+    margin-bottom: 5px;
+
+   .headerLink {
+      text-decoration: none;
+      color: $theme-primary;
+    }
+  }
+}
+
+.subDetailsHeader {
+  padding-left: 1em;
+  padding-bottom: 3.5em;
+  
+  .inStockText {
+    color: $theme-green;
+    font-weight: 700;
+  }
+
+  .outOfStockText {
+    color: $redish;
+    font-weight: 700;
+  }
+}
+
+.actionsContainer {
+  padding-bottom: 1em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-left: 1em;
+
+  .addToCart {
+    margin-right: 1em;
+    background-color: $theme-accent; 
+    color: $theme-black;
+    outline: none;
+    border: 0;
+    padding: .5em 1.5em;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}
+
+.quantityLabel {
+  margin-right: 1em;
+  padding: 2px 2px 2px 5px;
+  border-radius: 3px;
+  background-color: $theme-gray;
+  display: inline-block;
+}
+
+.quantityInput {
+  width: 100px;
+  margin-left: 5px;
+}

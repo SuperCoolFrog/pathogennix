@@ -7,6 +7,7 @@ import { inventoryStateSelector } from '../../store/inventory/inventory-selector
 import { getItems } from '../../store/inventory/inventory-thunks';
 import LoadingWithOverlay from '../LoadingWithOverlay/LoadingWithOverlay';
 import InventoryItem from '../../models/InventoryItem';
+import ListItem from './components/SearchResultListItem/SearchResultListItem';
 
 const SearchResultsContainer = () => {
   const { searchString } = useParams();
@@ -45,7 +46,7 @@ const SearchResultsContainer = () => {
     <div className={"pure-g"}>
       <div className={"pure-u-1"}>
         <div className={styles.contentContainer}>
-          {hasFetchedInventory && filteredItems.map(item => (<div>{item.itemName}</div>))}
+          {hasFetchedInventory && filteredItems.map(item => (<ListItem item={item} />))}
           {isLoadingInventory && <LoadingWithOverlay contained />}
         </div>
       </div>
