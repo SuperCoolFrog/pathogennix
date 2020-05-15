@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styles from './shopping-cart-drawer.module.scss';
 import Drawer from '../Drawer/Drawer';
 import { useDispatch } from 'react-redux';
 import shoppingCartSlice from '../../store/shopping-cart/shopping-cart-slice';
+import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-cart-selector';
 import DrawerHeader from './components/ShoppingCartDrawerHeader/ShoppingCartDrawerHeader';
 import ShoppingCartItems from './components/ShoppingCartItems/ShoppingCartItems';
 
@@ -13,6 +15,7 @@ interface NavigationDrawerProps {
 const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
   const dispatch = useDispatch();
   const { closeDrawer } = shoppingCartSlice.actions;
+  const shoppingCartItems = useSelector(shoppingCartItemsSelector);
   
   const handleClose = () => {
     dispatch(closeDrawer());
@@ -23,7 +26,7 @@ const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
       <DrawerHeader />
     </div>
     <div className={styles.cartItemsContainer}>
-      <ShoppingCartItems />
+      <ShoppingCartItems cartItems={shoppingCartItems} />
     </div>
   </div>);
   
