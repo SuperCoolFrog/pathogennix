@@ -14,15 +14,15 @@ interface InventoryItem {
 export const parseInventoryItem = (json: any) => {
   const item = {
     itemId: json.itemId,
-    itemName: json.itemName,
+    itemName: json.itemName || '',
     SKU: json.sku,
     active: json.active,
-    category: json.category,
+    category: json.category || '',
     created: new Date(json.created._seconds * 1000),
     imageSrc: json.imageSrc,
     price: parseFloat(json.price),
     quantity: parseInt(json.quantity),
-    description: json.description,
+    description: json.description || '',
   };
   return item as InventoryItem;
 };

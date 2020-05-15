@@ -2,9 +2,14 @@
 
 .searchResultsContainer {
   background: $theme-white;
+  min-height: 75vh;
 }
 
 .header {
   padding-left: 2em;
   color: $theme-dark;
+}
+
+.contentContainer {
+  position: relative;
 }
