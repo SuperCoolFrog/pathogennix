@@ -39,8 +39,8 @@ class ItemsAPI {
     const url = `${this.endpoint}/fetchInventoryItems`;
     const body = JSON.stringify({externalAppKey: this.externalAppKey});
     const response = await fetch(url, { method: 'POST', body });
-    console.log('RESPONSE', await response.json());
-    return [];
+    const inventory = await response.json();
+    return inventory as InventoryItem[];
   }
 }
 

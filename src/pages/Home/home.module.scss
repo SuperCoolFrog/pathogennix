@@ -1,5 +1,9 @@
 @import "../../styles/theme.scss";
 
+.homeContainer {
+  min-height: 75vh;
+}
+
 .itemListContainer {
   padding: 1em;
   max-width: 1200px;

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 import styles from './home.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { inventoryStateSelector } from '../../store/inventory/inventory-selector';
@@ -21,19 +22,23 @@ const Home = () => {
   }, []); 
 
   return (<section className={"pure-g"}>
-    <div className={"pure-u-1"}>
-      <div className={styles.itemListContainer}>
-        <ItemList header="Popular Items" items={inventoryItems} />
-      </div>
-    </div>
-    <div className={"pure-u-1"}>
-      <div className={styles.itemListContainer}>
-        <ItemList header="Masks" items={inventoryItems} />
-      </div>
-    </div>
-    <div className={"pure-u-1"}>
-      <div className={styles.itemListContainer}>
-        <ItemList header="Sanitizer" items={inventoryItems} />
+    <div className={classNames("pure-u-1", styles.homeContainer)}>
+      <div className={"pure-g"}>
+        <div className={"pure-u-1"}>
+          <div className={styles.itemListContainer}>
+            <ItemList header="Popular Items" items={inventoryItems} />
+          </div>
+        </div>
+        <div className={"pure-u-1"}>
+          <div className={styles.itemListContainer}>
+            <ItemList header="Masks" items={inventoryItems} />
+          </div>
+        </div>
+        <div className={"pure-u-1"}>
+          <div className={styles.itemListContainer}>
+            <ItemList header="Sanitizer" items={inventoryItems} />
+          </div>
+        </div>
       </div>
     </div>
     <div className={"pure-u-1"}>

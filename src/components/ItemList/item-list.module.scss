@@ -4,7 +4,7 @@
   background: $theme-white;
   padding: 1em;
   border-radius: 3px;
-  overflow-x: scroll;
+  overflow-x: auto;
   position: relative;
   z-index: 1;
 }
@@ -27,4 +27,5 @@
   top: 2.5em;
   left: 1em;
   z-index: 2;
+  width: 100%;
 }

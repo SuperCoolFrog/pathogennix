@@ -13,8 +13,8 @@ const ItemList = ({ header, items }: ItemListProps) => {
     <div className={styles.header}>{header}</div>
     <div className={styles.itemListContainer}>
     <div className={styles.itemsContainer}>
-      { items && items.length && items.map(() => (
-        <Card />
+      { items && items.length && items.map((item) => (
+        <Card item={item} key={item.itemId} />
       ))}
     </div>
   </div></>);
