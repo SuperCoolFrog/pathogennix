@@ -1,25 +1,32 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './cart-item-list-item.module.scss';
-import InventoryItem from '../../../../models/InventoryItem';
+import ShoppingCartItem from '../../../../models/ShoppingCartItem';
+import { asPriceString } from '../../../../helpers/helpers';
 
 interface CartItemListItemProps {
-  item: InventoryItem;
+  cartItem: ShoppingCartItem;
 }
 
-const CartItemListItem = ({ item }: CartItemListItemProps) => {
+const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
+  const item = cartItem.inventoryItem; 
+  const totalPrice = asPriceString(item.price * cartItem.quantityToBuy);
+
   return (<div className={classNames("pure-g", styles.container)}>
     <div className={classNames("pure-u-1 pure-u-md-1-2", styles.imageContainerContainer)}>
       <div className={styles.imageContainer}>
-        <img alt={item.itemName} src={item.imageSrc || "/mask.placeholder.png"} className="pure-img" />
+        <img alt={item.itemName}
+          src={item.imageSrc}
+          className={classNames("pure-img", styles.image)}
+        />
       </div>
     </div>
     <div className={classNames("pure-u-1 pure-u-md-1-2", styles.priceContainer)}>
       <div>
         <span className={styles.price}>
-          ${item.price}
+          ${totalPrice}
         </span>
-        <span className={styles.priceQuantity}>(x1)</span>
+        <span className={styles.priceQuantity}>(x{cartItem.quantityToBuy})</span>
       </div>
       <span className={classNames(styles.itemName, styles.details)}>{item.itemName}</span>
     </div>

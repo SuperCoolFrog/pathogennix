@@ -10,7 +10,7 @@ interface ShoppingCartItemsProps {
 const ShoppingCartItems = ({ cartItems }: ShoppingCartItemsProps) => {
   return (<div className={styles.container}>
     {!(cartItems && cartItems.length) && <p className={styles.noItemsText}>No cartItems in your cart</p>}
-    {cartItems && cartItems.map(cartItem => (<CartListItem key={cartItem.inventoryItem.itemId} item={cartItem.inventoryItem} />))}
+    {cartItems && cartItems.map(cartItem => (<CartListItem key={cartItem.inventoryItem.itemId} cartItem={cartItem} />))}
   </div>);
 };
 

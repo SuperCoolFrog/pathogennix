@@ -2,10 +2,23 @@
 
 .container {
   margin: 1em 0;
+  
+  .imageContainerContainer {
+      width: 130px;
+      height: 100px;
+    
+    .imageContainer {
+      padding: 0 1em;
+      height: 100%;
+      width: 100%;
 
-  .imageContainer {
-    padding: 0 1em;
+      .image {
+        width: 100%;
+        max-height: 100%;
+      }
+    }
   }
+
 
   .priceContainer {
     display: flex;
@@ -34,7 +47,8 @@
     border-left: 3px solid $theme-accent;
     
     .imageContainerContainer {
-      width: 40%;  
+      width: 65px;  
+      margin-right: 1em;
     }
 
     .priceContainer {
