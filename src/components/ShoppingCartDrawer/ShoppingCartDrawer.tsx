@@ -21,9 +21,17 @@ const NavigationDrawer = ({ isOpen }: NavigationDrawerProps) => {
     dispatch(closeDrawer());
   };
   
+  let subtotal = 0;
+  
+  if (shoppingCartItems) {
+    subtotal = shoppingCartItems.reduce((t, cartItem) => {
+      return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
+    }, 0);
+  }
+  
   const renderBody = () => (<div>
     <div className={styles.headerContainer}>
-      <DrawerHeader />
+      <DrawerHeader subtotal={subtotal} />
     </div>
     <div className={styles.cartItemsContainer}>
       <ShoppingCartItems cartItems={shoppingCartItems} />
