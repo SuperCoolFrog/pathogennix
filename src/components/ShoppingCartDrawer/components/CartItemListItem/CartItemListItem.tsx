@@ -14,11 +14,31 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
   const item = cartItem.inventoryItem; 
   const totalPrice = asPriceString(item.price * cartItem.quantityToBuy);
   const dispatch = useDispatch();
-  const { removeCartItem } = shoppingCartSlice.actions;
+  const { removeCartItem, updateCartItemQuantity } = shoppingCartSlice.actions;
   
   const handleDeleteClick = (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
     dispatch(removeCartItem(cartItem.inventoryItem.itemId));
+  };
+  
+  const handleUpdateQuantity = (modifier: number) => (ev: React.FormEvent<HTMLButtonElement>) => {
+    ev.preventDefault();
+    let quantityToBuy = cartItem.quantityToBuy + modifier;
+
+    if (quantityToBuy < 0) {
+      quantityToBuy = 0;
+    }
+
+    if (quantityToBuy > cartItem.inventoryItem.quantity) {
+      quantityToBuy = cartItem.inventoryItem.quantity;
+    }
+
+    const updatedItem = {
+      inventoryItem: cartItem.inventoryItem,
+      quantityToBuy,
+    };
+    
+    dispatch(updateCartItemQuantity(updatedItem))
   };
 
   return (<div className={classNames("pure-g", styles.container)}>
@@ -41,9 +61,9 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
     </div>
     <div className={classNames("pure-u-1", styles.detailsContainer, styles.details)}>
       <div className={styles.quantity}>
-        <button className={styles.minusButton}>-</button>
-        <input min="1" className={styles.quantityInput} />
-        <button className={styles.plusButton}>+</button>
+        <button className={styles.minusButton} onClick={handleUpdateQuantity(-1)}>-</button>
+        <input min="1" className={styles.quantityInput} value={cartItem.quantityToBuy} />
+        <button className={styles.plusButton} onClick={handleUpdateQuantity(1)}>+</button>
       </div>
       <div className={styles.delete}>
         <button className={styles.deleteButton} onClick={handleDeleteClick}>
