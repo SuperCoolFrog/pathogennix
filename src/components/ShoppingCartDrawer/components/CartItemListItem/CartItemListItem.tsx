@@ -1,8 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import styles from './cart-item-list-item.module.scss';
 import ShoppingCartItem from '../../../../models/ShoppingCartItem';
 import { asPriceString } from '../../../../helpers/helpers';
+import shoppingCartSlice from '../../../../store/shopping-cart/shopping-cart-slice';
 
 interface CartItemListItemProps {
   cartItem: ShoppingCartItem;
@@ -11,6 +13,13 @@ interface CartItemListItemProps {
 const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
   const item = cartItem.inventoryItem; 
   const totalPrice = asPriceString(item.price * cartItem.quantityToBuy);
+  const dispatch = useDispatch();
+  const { removeCartItem } = shoppingCartSlice.actions;
+  
+  const handleDeleteClick = (ev: React.FormEvent<HTMLButtonElement>) => {
+    ev.preventDefault();
+    dispatch(removeCartItem(cartItem.inventoryItem.itemId));
+  };
 
   return (<div className={classNames("pure-g", styles.container)}>
     <div className={classNames("pure-u-1 pure-u-md-1-2", styles.imageContainerContainer)}>
@@ -37,7 +46,9 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
         <button className={styles.plusButton}>+</button>
       </div>
       <div className={styles.delete}>
-        <button className={styles.deleteButton}>delete</button>
+        <button className={styles.deleteButton} onClick={handleDeleteClick}>
+          delete
+        </button>
       </div>
     </div>
   </div>);
