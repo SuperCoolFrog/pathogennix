@@ -25,14 +25,6 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
     ev.preventDefault();
     let quantityToBuy = cartItem.quantityToBuy + modifier;
 
-    if (quantityToBuy < 0) {
-      quantityToBuy = 0;
-    }
-
-    if (quantityToBuy > cartItem.inventoryItem.quantity) {
-      quantityToBuy = cartItem.inventoryItem.quantity;
-    }
-
     const updatedItem = {
       inventoryItem: cartItem.inventoryItem,
       quantityToBuy,

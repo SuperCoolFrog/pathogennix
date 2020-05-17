@@ -30,6 +30,10 @@ const shoppingCartSlice = createSlice({
 
       if (existingCartItem) {
         existingCartItem.quantityToBuy += nuCartItem.quantityToBuy;
+        
+        if (existingCartItem.quantityToBuy > existingCartItem.inventoryItem.quantity) {
+          existingCartItem.quantityToBuy = existingCartItem.inventoryItem.quantity;
+        }
       } else {
         state.cartItems.push(nuCartItem);
       }
@@ -40,6 +44,14 @@ const shoppingCartSlice = createSlice({
 
       if (existingCartItem) {
         existingCartItem.quantityToBuy = nuCartItem.quantityToBuy;
+
+        if (existingCartItem.quantityToBuy > existingCartItem.inventoryItem.quantity) {
+          existingCartItem.quantityToBuy = existingCartItem.inventoryItem.quantity;
+        }
+
+        if (existingCartItem.quantityToBuy > existingCartItem.inventoryItem.quantity) {
+          existingCartItem.quantityToBuy = existingCartItem.inventoryItem.quantity;
+        }
       } else {
         state.cartItems.push(nuCartItem);
       }
