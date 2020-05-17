@@ -19,10 +19,18 @@
 
 .imageContainer {
   padding: 1em;
+  max-width: 130px;
+  
+  .image {
+    width: 100%;
+  }
 }
 
 .rightContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .detailsHeader {
@@ -34,12 +42,12 @@
 
 .subDetailsHeader {
   padding-left: 1em;
-  padding-bottom: 3.5em;
+  // padding-bottom: 3.5em;
 }
 
 .actionsContainer {
   padding-bottom: 1em;
-  text-align: right;
+  // text-align: right;
   position: absolute;
   bottom: 0;
   width: 100%;

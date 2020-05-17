@@ -1,16 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './review-cart.module.scss';
-import InventoryItem from '../../models/InventoryItem';
+import ShoppingCartItem from '../../models/ShoppingCartItem';
 import ItemDetailsRow from './components/ItemDetailsRow/ItemDetailsRow';
-
-const demoItems: InventoryItem[] = [
-];
+import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-cart-selector';
 
 
 const ReviewCart = () => {
-  const items = [] as InventoryItem[];
+  const items = useSelector(shoppingCartItemsSelector);
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
     <section className={styles.reviewCartContainer}>
@@ -21,7 +20,7 @@ const ReviewCart = () => {
         <div className={"pure-u-2-3"}>
           <div className={styles.contentContainer}>
             {items.map(item => (
-              <ItemDetailsRow item={item} />
+              <ItemDetailsRow cartItem={item} />
             ))}
             {!(items && items.length) && <p className={styles.noItems}>No Items have been added to your cart.</p>}
           </div>
