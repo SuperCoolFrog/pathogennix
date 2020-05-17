@@ -49,8 +49,8 @@ const shoppingCartSlice = createSlice({
           existingCartItem.quantityToBuy = existingCartItem.inventoryItem.quantity;
         }
 
-        if (existingCartItem.quantityToBuy > existingCartItem.inventoryItem.quantity) {
-          existingCartItem.quantityToBuy = existingCartItem.inventoryItem.quantity;
+        if (existingCartItem.quantityToBuy < 0) {
+          existingCartItem.quantityToBuy = 0;
         }
       } else {
         state.cartItems.push(nuCartItem);

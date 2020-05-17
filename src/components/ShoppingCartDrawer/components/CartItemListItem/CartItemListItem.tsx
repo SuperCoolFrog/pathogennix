@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Dispatch } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import styles from './cart-item-list-item.module.scss';
 import ShoppingCartItem from '../../../../models/ShoppingCartItem';
@@ -15,7 +16,7 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
   const totalPrice = asPriceString(item.price * cartItem.quantityToBuy);
   const dispatch = useDispatch();
   const { removeCartItem, updateCartItemQuantity } = shoppingCartSlice.actions;
-  
+
   const handleDeleteClick = (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
     dispatch(removeCartItem(cartItem.inventoryItem.itemId));
@@ -54,7 +55,7 @@ const CartItemListItem = ({ cartItem }: CartItemListItemProps) => {
     <div className={classNames("pure-u-1", styles.detailsContainer, styles.details)}>
       <div className={styles.quantity}>
         <button className={styles.minusButton} onClick={handleUpdateQuantity(-1)}>-</button>
-        <input min="1" className={styles.quantityInput} value={cartItem.quantityToBuy} />
+        <input type="number" min="1" className={styles.quantityInput} value={cartItem.quantityToBuy} readOnly />
         <button className={styles.plusButton} onClick={handleUpdateQuantity(1)}>+</button>
       </div>
       <div className={styles.delete}>
