@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import styles from './details.module.scss';
@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import Footer from '../../components/Footer/Footer';
 import { inventoryItemSelector, inventoryStateSelector } from '../../store/inventory/inventory-selector';
 import { getItems } from '../../store/inventory/inventory-thunks';
+import ShoppingCartItem from '../../models/ShoppingCartItem';
+import shoppingCartSlice from '../../store/shopping-cart/shopping-cart-slice';
+import Loading from '../../components/LoadingEllipsis/LoadingEllipsis';
 
 const Details = () => {
   const { itemId } = useParams();
@@ -15,6 +18,9 @@ const Details = () => {
     hasFetchedInventory,
     isLoadingInventory,
   } = useSelector(inventoryStateSelector);
+  const { addCartItemQuantity } = shoppingCartSlice.actions;
+  const [quantityInputValue, updateInputValue] = useState(1);
+  const [showLoading, setShowLoading] = useState(false);
   
   useEffect(() => {
     if (!(isLoadingInventory || hasFetchedInventory)) {
@@ -25,6 +31,28 @@ const Details = () => {
   if (!item) {
     return <div>Loading</div>;
   }
+  
+  const handleInputChange = (ev: React.FormEvent<HTMLInputElement>) => {
+    ev.preventDefault();
+    updateInputValue(parseInt(ev.currentTarget.value));
+  };
+  
+  const handleAddToCartClick = (ev: React.FormEvent<HTMLButtonElement>) => {
+    ev.preventDefault();
+    
+    const cartItem = {
+      inventoryItem: item,
+      quantityToBuy: quantityInputValue,
+    };
+    
+    setShowLoading(true);
+
+    dispatch(addCartItemQuantity(cartItem));
+
+    setTimeout(() => {
+      setShowLoading(false);
+    }, 300);
+  };
 
 
   return (<section className={"pure-g"}>
@@ -51,9 +79,14 @@ const Details = () => {
             <section className={styles.actionsContainer}>
               <label className={styles.quantityLabel}>
                 Quantity
-                <input type="number" min="1" className={styles.quantityInput} />
+                <input type="number" min="1" className={styles.quantityInput} onChange={handleInputChange}
+                  value={quantityInputValue}/>
               </label>
-              <button className={styles.addToCart}>Add to Cart</button>
+              {
+                showLoading
+                ? (<Loading />)
+                : (<button className={styles.addToCart} onClick={handleAddToCartClick}>Add to Cart</button>)
+              }
             </section>
           </div>
         </div>

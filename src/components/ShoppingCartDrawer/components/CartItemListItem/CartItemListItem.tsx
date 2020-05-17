@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Dispatch } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import styles from './cart-item-list-item.module.scss';
 import ShoppingCartItem from '../../../../models/ShoppingCartItem';
