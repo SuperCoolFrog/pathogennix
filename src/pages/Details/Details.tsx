@@ -82,11 +82,14 @@ const Details = () => {
                 <input type="number" min="1" className={styles.quantityInput} onChange={handleInputChange}
                   value={quantityInputValue}/>
               </label>
-              {
-                showLoading
-                ? (<Loading />)
-                : (<button className={styles.addToCart} onClick={handleAddToCartClick}>Add to Cart</button>)
-              }
+              <div className={styles.buttonContainer}>
+                <button className={classNames(styles.addToCart, { [styles.btnLoading]: showLoading})}
+                  onClick={handleAddToCartClick}
+                  disabled={showLoading}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </section>
           </div>
         </div>

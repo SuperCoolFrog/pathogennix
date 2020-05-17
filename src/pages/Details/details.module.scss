@@ -49,28 +49,46 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 50px;
 
-  .addToCart {
+  .quantityLabel {
     margin-right: 1em;
-    background-color: $theme-accent; 
-    color: $theme-black;
-    outline: none;
-    border: 0;
-    padding: .5em 1.5em;
-    font-weight: 600;
-    border-radius: 5px;
+    padding: 2px 2px 2px 5px;
+    border-radius: 3px;
+    background-color: $theme-gray;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .quantityInput {
+    width: 100px;
+    margin-left: 5px;
+  }
+
+  .buttonContainer {
+    position: relative;
+    display: inline-block;
+
+    .addToCart {
+      margin-right: 1em;
+      background-color: $theme-accent; 
+      color: $theme-black;
+      outline: none;
+      border: 0;
+      padding: .5em 1.5em;
+      font-weight: 600;
+      border-radius: 5px;
+      
+      &:disabled {
+        opacity: .75;
+      }
+    }
+    
+    .loadingContainer {
+      position: relative;
+      top: -15px;
+      width: 150px;
+    }
   }
 }
 
-.quantityLabel {
-  margin-right: 1em;
-  padding: 2px 2px 2px 5px;
-  border-radius: 3px;
-  background-color: $theme-gray;
-  display: inline-block;
-}
-
-.quantityInput {
-  width: 100px;
-  margin-left: 5px;
-}
