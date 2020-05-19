@@ -1,0 +1,10 @@
+@import '../../styles/theme.scss';
+
+.errorMessage {
+  border: 1px solid $redish;
+  border-radius: 3px;
+  color: $redish;
+  background-color: lighten($redish, 30%);
+  padding: .5em 1em;
+  font-weight: 600;
+}

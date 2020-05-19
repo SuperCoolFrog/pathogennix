@@ -33,16 +33,8 @@ const CheckoutForm = () => {
     dispatch(updateForm({ field, value: ev.currentTarget.value }));
   };
 
-  const handleSubmit = async (ev: React.FormEvent) => {
-    ev.preventDefault();
-    // const {error, paymentMethod} = await stripe.createPaymentMethod({
-    //   type: 'card',
-    //   card: elements.getElement(CardElement),
-    // });
-  };
-
   return (
-    <form onSubmit={handleSubmit} className={classNames("pure-form pure-form-stacked", styles.form)}>
+    <form className={classNames("pure-form pure-form-stacked", styles.form)}>
       <fieldset>
         <legend>Billing Information</legend>
         <div className={"pure-g"}>
@@ -172,11 +164,6 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-3">
             <label htmlFor="cvc" className={styles.cardElementLabel}>CVC</label>
             <CardCvcElement className={styles.cardElement} />
-          </div>
-          <div className="pure-u-1">
-            <button type="submit" disabled={!stripe}>
-              Pay
-            </button>
           </div>
         </div>
       </fieldset>

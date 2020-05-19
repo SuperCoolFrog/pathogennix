@@ -1,14 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import styles from './billing-info-card.module.scss';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
+import LoadingWithOverlay from '../../components/LoadingWithOverlay/LoadingWithOverlay';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-cart-selector';
 import { asPriceString } from '../../helpers/helpers';
-
+import { fetchConfig } from '../../store/config/config-thunks';
+import { configStateSelector } from '../../store/config/config-selector';
 
 const ReviewCart = () => {
   const items = useSelector(shoppingCartItemsSelector);
+  const {
+    hasFetchedConfig,
+    isFetchingConfig,
+    publishableStripeKey,
+    configFetchError,
+  } = useSelector(configStateSelector);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if (!(hasFetchedConfig || isFetchingConfig)) {
+      dispatch(fetchConfig());
+    }
+  }, []);
 
   let subtotal = 0;
   let processingFee = 0;
@@ -19,12 +35,22 @@ const ReviewCart = () => {
       return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
     }, 0);
   }
+  
+  const handlePlaceOrderClick = (ev: React.FormEvent<HTMLButtonElement>) => {
+    ev.preventDefault();
+  };
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
+    { isFetchingConfig && <LoadingWithOverlay contained />}
     <section>
       <header className={styles.header}>
         <h2>Billing and Shipping</h2>
       </header>
+      { configFetchError && (
+        <div className={styles.errorContainer}>
+          <ErrorMessage message={configFetchError} />
+        </div>
+      )}
     </section>
     <div className={"pure-g"}>
       <div className={"pure-u-2-3"}>
@@ -55,7 +81,7 @@ const ReviewCart = () => {
             <span className={styles.total}>${asPriceString(subtotal + processingFee + shippingCost)}</span>
           </div>
           <div className={styles.placeOrderButtonContainer}>
-            <button className={styles.placeOrderButton}>Place Order</button>
+            <button className={styles.placeOrderButton} onClick={handlePlaceOrderClick}>Place Order</button>
           </div>
         </div>
       </div>
