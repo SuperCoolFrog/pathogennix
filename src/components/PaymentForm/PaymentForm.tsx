@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import {loadStripe} from '@stripe/stripe-js';
@@ -11,42 +12,29 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import styles from './payment-form.module.scss';
+import paymentProcessingSlice from '../../store/payment-processing/payment-processing-slice';
+import { paymentProcessingFormSelector } from '../../store/payment-processing/payment-processing-selector';
+import PaymentInfoFormField from '../../models/PaymentInfoFormField.enum';
 
-interface PaymentFormFields {
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  email:string;
-}
-
-const initialState: PaymentFormFields = {
-  firstName: '',
-  lastName: '',
-  address: '',
-  city: '',
-  state: '',
-  postalCode: '',
-  email: '',
-};
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [formFields, updateFormFields] = useState(initialState);
+  const {
+    paymentInfoForm,
+  } = useSelector(paymentProcessingFormSelector);
+  const dispatch = useDispatch();
+  const {
+    updateForm,
+  } = paymentProcessingSlice.actions;
   
-  const handleFieldChange = (name: string) => (ev: React.FormEvent<HTMLInputElement>) => {
+  const handleFieldChange = (field: PaymentInfoFormField) => (ev: React.FormEvent<HTMLInputElement>) => {
     ev.preventDefault();
-    updateFormFields({
-      ...formFields,
-      [name]: ev.currentTarget.value,
-    })
+    dispatch(updateForm({ field, value: ev.currentTarget.value }));
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    // event.preventDefault();
+  const handleSubmit = async (ev: React.FormEvent) => {
+    ev.preventDefault();
     // const {error, paymentMethod} = await stripe.createPaymentMethod({
     //   type: 'card',
     //   card: elements.getElement(CardElement),
@@ -61,8 +49,8 @@ const CheckoutForm = () => {
            <div className="pure-u-1 pure-u-md-1-2">
             <input id="firstName" type="text"
                    placeholder="First Name"
-                   onChange={handleFieldChange('firstName')}
-                   value={formFields.firstName}
+                   onChange={handleFieldChange(PaymentInfoFormField.firstName)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.firstName,'')}
                    maxLength={25}
                    required
             />
@@ -70,8 +58,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-2">
             <input id="lastName" type="text"
                    placeholder="Last Name"
-                   onChange={handleFieldChange('lastName')}
-                   value={formFields.lastName}
+                   onChange={handleFieldChange(PaymentInfoFormField.lastName)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.lastName,'')}
                    maxLength={25}
                    required
             />
@@ -79,8 +67,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1">
             <input id="address" type="text"
                    placeholder="Address"
-                   onChange={handleFieldChange('address')}
-                   value={formFields.address}
+                   onChange={handleFieldChange(PaymentInfoFormField.billingStreetAddress)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.billingStreetAddress,'')}
                    maxLength={50}
                    className={styles.input95}
                    required
@@ -89,8 +77,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-2">
             <input id="city" type="text"
                    placeholder="City"
-                   onChange={handleFieldChange('city')}
-                   value={formFields.city}
+                   onChange={handleFieldChange(PaymentInfoFormField.billingCity)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.billingCity,'')}
                    maxLength={50}
                    required
             />
@@ -98,8 +86,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-2">
             <input id="state" type="text"
                    placeholder="State"
-                   onChange={handleFieldChange('state')}
-                   value={formFields.state}
+                   onChange={handleFieldChange(PaymentInfoFormField.billingState)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.billingState,'')}
                    maxLength={2}
                    required
             />
@@ -107,8 +95,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-2">
             <input id="postalCode" type="number"
                    placeholder="Postal Code"
-                   onChange={handleFieldChange('postalCode')}
-                   value={formFields.postalCode}
+                   onChange={handleFieldChange(PaymentInfoFormField.billingPostalCode)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.billingPostalCode,'')}
                    maxLength={15}
                    required
             />
@@ -116,8 +104,8 @@ const CheckoutForm = () => {
           <div className="pure-u-1 pure-u-md-1-2">
             <input id="email" type="email"
                    placeholder="Email"
-                   onChange={handleFieldChange('email')}
-                   value={formFields.email}
+                   onChange={handleFieldChange(PaymentInfoFormField.email)}
+                   value={paymentInfoForm.getWithDefault(PaymentInfoFormField.email,'')}
                    maxLength={50}
                    required
             />
@@ -130,8 +118,8 @@ const CheckoutForm = () => {
         <div className="pure-u-1">
           <input id="address" type="text"
                  placeholder="Address"
-                 onChange={handleFieldChange('address')}
-                 value={formFields.address}
+                 onChange={handleFieldChange(PaymentInfoFormField.shippingStreetAddress)}
+                 value={paymentInfoForm.getWithDefault(PaymentInfoFormField.shippingStreetAddress,'')}
                  maxLength={50}
                  className={styles.input95}
                  required
@@ -140,8 +128,8 @@ const CheckoutForm = () => {
         <div className="pure-u-1 pure-u-md-1-2">
           <input id="city" type="text"
                  placeholder="City"
-                 onChange={handleFieldChange('city')}
-                 value={formFields.city}
+                 onChange={handleFieldChange(PaymentInfoFormField.shippingCity)}
+                 value={paymentInfoForm.getWithDefault(PaymentInfoFormField.shippingCity,'')}
                  maxLength={50}
                  required
           />
@@ -149,8 +137,8 @@ const CheckoutForm = () => {
         <div className="pure-u-1 pure-u-md-1-2">
           <input id="state" type="text"
                  placeholder="State"
-                 onChange={handleFieldChange('state')}
-                 value={formFields.state}
+                 onChange={handleFieldChange(PaymentInfoFormField.shippingState)}
+                 value={paymentInfoForm.getWithDefault(PaymentInfoFormField.shippingState,'')}
                  maxLength={2}
                  required
           />
@@ -158,18 +146,9 @@ const CheckoutForm = () => {
         <div className="pure-u-1 pure-u-md-1-2">
           <input id="postalCode" type="number"
                  placeholder="Postal Code"
-                 onChange={handleFieldChange('postalCode')}
-                 value={formFields.postalCode}
+                 onChange={handleFieldChange(PaymentInfoFormField.shippingPostalCode)}
+                 value={paymentInfoForm.getWithDefault(PaymentInfoFormField.shippingPostalCode,'')}
                  maxLength={15}
-                 required
-          />
-        </div>
-        <div className="pure-u-1 pure-u-md-1-2">
-          <input id="email" type="email"
-                 placeholder="Email"
-                 onChange={handleFieldChange('email')}
-                 value={formFields.email}
-                 maxLength={50}
                  required
           />
         </div>

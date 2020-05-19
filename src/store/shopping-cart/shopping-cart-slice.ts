@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import CheckoutWizardStep from '../../models/CheckoutWizardStep.enum';
 import ShoppingCartItem from '../../models/ShoppingCartItem';
 
 type ItemId = string;
 
 interface ShoppingCartState {
   drawerIsOpen: boolean;
-  currentCheckoutWizardStep: CheckoutWizardStep;
   cartItems: ShoppingCartItem[];
 }
 
@@ -14,7 +12,6 @@ const shoppingCartSlice = createSlice({
   name: 'shoppingCart',
   initialState: {
     drawerIsOpen: false,
-    currentCheckoutWizardStep: CheckoutWizardStep.ReviewCart,
     cartItems: new Array<ShoppingCartItem>(),
   } as ShoppingCartState,
   reducers: {

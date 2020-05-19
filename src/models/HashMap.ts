@@ -32,6 +32,16 @@ class HashMap<K,V> extends Array<[K, V]> {
     return cloned;
   }
   
+  toJSONMap(keyToString: (key: K) => string): {[key: string]: V} {
+    const json: {[key: string]: V} = {};
+
+    this.forEach(([k, v]) => {
+      json[keyToString(k)] = v;
+    });
+
+    return json;
+  }
+  
   ref() {
     return this;  
   }
