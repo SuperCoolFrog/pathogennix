@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import styles from './billing-info-card.module.scss';
@@ -9,9 +9,15 @@ import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-ca
 import { asPriceString } from '../../helpers/helpers';
 import { fetchConfig } from '../../store/config/config-thunks';
 import { configStateSelector } from '../../store/config/config-selector';
+import {
+  Elements,
+} from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { getStripe, setStripe } from './StripeGlobalStore';
 
 const ReviewCart = () => {
   const items = useSelector(shoppingCartItemsSelector);
+  const [stripeInstance, setStripeInstance] = useState(getStripe());
   const {
     hasFetchedConfig,
     isFetchingConfig,
@@ -21,10 +27,20 @@ const ReviewCart = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    if (!(hasFetchedConfig || isFetchingConfig)) {
+    if (!(stripeInstance || hasFetchedConfig || isFetchingConfig)) {
       dispatch(fetchConfig());
     }
   }, []);
+
+  useEffect(() => {
+    if (hasFetchedConfig && publishableStripeKey && !stripeInstance) {
+      loadStripe(publishableStripeKey)
+        .then(stripe => {
+          setStripe(stripe)
+          setStripeInstance(stripe)
+        });
+    }
+  }, [publishableStripeKey]);
 
   let subtotal = 0;
   let processingFee = 0;
@@ -41,7 +57,7 @@ const ReviewCart = () => {
   };
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
-    { isFetchingConfig && <LoadingWithOverlay contained />}
+    { (isFetchingConfig || !stripeInstance) && <LoadingWithOverlay contained />}
     <section>
       <header className={styles.header}>
         <h2>Billing and Shipping</h2>
@@ -52,40 +68,42 @@ const ReviewCart = () => {
         </div>
       )}
     </section>
-    <div className={"pure-g"}>
-      <div className={"pure-u-2-3"}>
-        <div className={styles.contentContainer}>
-          <PaymentForm />
-        </div>
-      </div>
-      <div className={"pure-u-1-3"}>
-        <div className={styles.actionsContainer}>
-          <table className={styles.totalsTable}>
-            <tbody>
-              <tr>
-                <td>Subtotal</td>
-                <td>${asPriceString(subtotal)}</td>
-              </tr>
-              <tr>
-                <td>Processing Fee</td>
-                <td>${asPriceString(processingFee)}</td>
-              </tr>
-              <tr>
-                <td>Shipping</td>
-                <td>${asPriceString(shippingCost)}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className={styles.totalContainer}>
-            <span className={styles.totalLabel}>Total:</span>
-            <span className={styles.total}>${asPriceString(subtotal + processingFee + shippingCost)}</span>
-          </div>
-          <div className={styles.placeOrderButtonContainer}>
-            <button className={styles.placeOrderButton} onClick={handlePlaceOrderClick}>Place Order</button>
+    <Elements stripe={stripeInstance}>
+      <div className={"pure-g"}>
+        <div className={"pure-u-2-3"}>
+          <div className={styles.contentContainer}>
+            <PaymentForm />
           </div>
         </div>
+        <div className={"pure-u-1-3"}>
+          <div className={styles.actionsContainer}>
+            <table className={styles.totalsTable}>
+              <tbody>
+                <tr>
+                  <td>Subtotal</td>
+                  <td>${asPriceString(subtotal)}</td>
+                </tr>
+                <tr>
+                  <td>Processing Fee</td>
+                  <td>${asPriceString(processingFee)}</td>
+                </tr>
+                <tr>
+                  <td>Shipping</td>
+                  <td>${asPriceString(shippingCost)}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div className={styles.totalContainer}>
+              <span className={styles.totalLabel}>Total:</span>
+              <span className={styles.total}>${asPriceString(subtotal + processingFee + shippingCost)}</span>
+            </div>
+            <div className={styles.placeOrderButtonContainer}>
+              <button className={styles.placeOrderButton} onClick={handlePlaceOrderClick}>Place Order</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </Elements>
   </section>)
 };
 
