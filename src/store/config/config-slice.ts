@@ -5,7 +5,10 @@ interface ConfigState {
   publishableStripeKey: string;
   hasFetchedConfig: boolean;
   isFetchingConfig: boolean;
-    configFetchError: string;
+  configFetchError: string;
+  isLoadingStripe: boolean;
+  stripeIsLoaded: boolean;
+  stripeError: string;
 }
 
 const configSlice = createSlice({
@@ -15,6 +18,9 @@ const configSlice = createSlice({
     hasFetchedConfig: false,
     isFetchingConfig: false,
     configFetchError: '',
+    isLoadingStripe: false,
+    stripeIsLoaded: false,
+    stripeError: '',
   } as ConfigState,
   reducers: {
     configRequested(state) {
@@ -30,7 +36,20 @@ const configSlice = createSlice({
       state.hasFetchedConfig = true;
       state.isFetchingConfig = false;
       state.configFetchError = 'An error occurred with our system.  Please try again later';
-    }
+    },
+    stripeRequested(state) {
+      state.isLoadingStripe = true;
+      state.stripeIsLoaded = false;
+    },
+    stripeRequestSucceeded(state) {
+      state.isLoadingStripe = false;
+      state.stripeIsLoaded = true;
+    },
+    stripeRequestFailed(state, action: PayloadAction<string>) {
+      state.isLoadingStripe = false;
+      state.stripeIsLoaded = true;
+      state.stripeError = 'An internal error has occurred loading our payment management system.  Please try again later;';
+    },
   }
 });
 
