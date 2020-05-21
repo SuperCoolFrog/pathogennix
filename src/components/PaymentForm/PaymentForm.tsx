@@ -16,7 +16,6 @@ import paymentProcessingSlice from '../../store/payment-processing/payment-proce
 import { paymentProcessingFormSelector } from '../../store/payment-processing/payment-processing-selector';
 import PaymentInfoFormField from '../../models/PaymentInfoFormField.enum';
 
-
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -27,7 +26,7 @@ const CheckoutForm = () => {
   const {
     updateForm,
   } = paymentProcessingSlice.actions;
-  
+
   const handleFieldChange = (field: PaymentInfoFormField) => (ev: React.FormEvent<HTMLInputElement>) => {
     ev.preventDefault();
     dispatch(updateForm({ field, value: ev.currentTarget.value }));
@@ -171,13 +170,4 @@ const CheckoutForm = () => {
   );
 };
 
-const stripePromise = loadStripe('pk_test_eGNpu8CRF27Jo28PGUjIwu7t00JIbgA8Tm');
-
-
-const PaymentForm = () => (
-  <Elements stripe={stripePromise}>
-    <CheckoutForm />
-  </Elements>
-);
-
-export default PaymentForm;
+export default CheckoutForm;

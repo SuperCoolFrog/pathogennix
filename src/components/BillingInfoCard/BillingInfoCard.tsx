@@ -10,6 +10,21 @@ import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-ca
 import { asPriceString } from '../../helpers/helpers';
 import { configStateSelector } from '../../store/config/config-selector';
 import useStripeInstance from '../StripeElementsContainer/useStripeInstance';
+import paymentProcessingSlice from '../../store/payment-processing/payment-processing-slice';
+import { paymentProcessingFormSelector, paymentProcessingStateSelector } from '../../store/payment-processing/payment-processing-selector';
+import PaymentInfoFormField from '../../models/PaymentInfoFormField.enum';
+import api from '../../api';
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
+  useElements,
+  useStripe
+} from '@stripe/react-stripe-js';
+
+const formFieldKeyToString = (field: PaymentInfoFormField): string => {
+  return PaymentInfoFormField[field];
+};
 
 const BillingInfoCard = () => {
   const items = useSelector(shoppingCartItemsSelector);
@@ -19,7 +34,16 @@ const BillingInfoCard = () => {
     configFetchError,
   } = useSelector(configStateSelector);
   const dispatch = useDispatch();
-  const stripe = useStripeInstance();
+  const {
+    paymentInfoForm,
+  } = useSelector(paymentProcessingFormSelector);
+  const {
+    orderId,
+    isProcessing,
+    processingError,
+  } = useSelector(paymentProcessingStateSelector);
+  const elements = useElements();
+  const stripe = useStripe();
   
   let subtotal = 0;
   let processingFee = 0;
@@ -32,14 +56,50 @@ const BillingInfoCard = () => {
   } else {
     return <Redirect to="/checkout" />
   }
+
   
-  const handlePlaceOrderClick = (ev: React.FormEvent<HTMLButtonElement>) => {
+  const handlePlaceOrderClick = async (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
-    console.log('STRIPE', stripe);
+
+    const {
+      paymentIsProcessing,
+      paymentProcessingComplete,
+      paymentProcessingError,
+    } = paymentProcessingSlice.actions;
+    const cardNumberElement = elements?.getElement(CardNumberElement);
+    const billingAndShippingJSON = JSON.stringify(paymentInfoForm.toJSONMap(formFieldKeyToString));
+    
+    dispatch(paymentIsProcessing());
+  
+    try {
+      const paymentIntentResponse = await api.payments.placeOrder(items, billingAndShippingJSON);
+
+      // @ts-ignore
+      const result = await stripe.confirmCardPayment(paymentIntentResponse.clientSecret, {
+        payment_method: {
+          // @ts-ignore
+          card: cardNumberElement,
+          billing_details: {
+            name: `${paymentInfoForm.get(PaymentInfoFormField.firstName)} ${paymentInfoForm.get(PaymentInfoFormField.lastName)}`,
+            address: {
+              city: paymentInfoForm.get(PaymentInfoFormField.billingCity),
+              state: paymentInfoForm.get(PaymentInfoFormField.billingState),
+              postal_code: paymentInfoForm.get(PaymentInfoFormField.billingPostalCode),
+            },
+            email: paymentInfoForm.get(PaymentInfoFormField.email),
+          },
+        },
+        receipt_email: paymentInfoForm.get(PaymentInfoFormField.email),
+      });
+  
+      dispatch(paymentProcessingComplete(paymentIntentResponse.orderId));
+    } catch(e) {
+      dispatch(paymentProcessingError(e.message));
+    }
   };
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
-    { (isFetchingConfig || isLoadingStripe) && <LoadingWithOverlay contained />}
+    { (isFetchingConfig || isLoadingStripe || isProcessing) && <LoadingWithOverlay contained />}
     <section>
       <header className={styles.header}>
         <h2>Billing and Shipping</h2>
@@ -47,6 +107,11 @@ const BillingInfoCard = () => {
       { configFetchError && (
         <div className={styles.errorContainer}>
           <ErrorMessage message={configFetchError} />
+        </div>
+      )}
+      { processingError && (
+        <div className={styles.errorContainer}>
+          <ErrorMessage message={processingError} />
         </div>
       )}
     </section>

@@ -10,50 +10,37 @@ export interface PaymentIntentInfo {
 
 export interface PaymentProcessingState {
   isProcessing: boolean;
+  processingError: string;
   paymentIntent: PaymentIntentInfo;
-  settingsAreLoaded: boolean;
-  settingsAreLoading: boolean;
-  configSettings: ConfigSettings;
-  configSettingsLoadingError: string;
   paymentModalIsVisible: boolean;
   paymentInfoForm: HashMap<PaymentInfoFormField, string>;
   validationErrors: PaymentInfoFormField[],
   paymentInfoFormIsValid: boolean;
+  orderId: string;
 }
 
 const paymentProcessingSlice = createSlice({
   name: 'paymentProcessingSlice',
   initialState: {
     isProcessing: false,
-    settingsAreLoaded: false,
-    settingsAreLoading: false,
+    processingError: '',
     paymentModalIsVisible: false,
     paymentInfoForm: new HashMap<PaymentInfoFormField, string>(),
     validationErrors: new Array<PaymentInfoFormField>(),
     paymentInfoFormIsValid: false,
+    orderId: '',
   } as PaymentProcessingState,
   reducers: {
     paymentIsProcessing(state) {
       state.isProcessing = true;
     },
-    paymentProcessingEnded(state) {
+    paymentProcessingComplete(state, action: PayloadAction<string>) {
       state.isProcessing = false;
+      state.orderId = action.payload;
     },
-    settingsAreLoading(state) {
-      state.settingsAreLoading = true;
-      state.settingsAreLoaded = false;
-    },
-    settingsHaveLoaded(state, action: PayloadAction<ConfigSettings>) {
-      state.configSettings = action.payload;
-    },
-    loadingHasCompleted(state) {
-      state.settingsAreLoading = false;
-      state.settingsAreLoaded = true;
-    },
-    loadingSettingsHasFailed(state, action: PayloadAction<string>) {
-      state.settingsAreLoading = false;
-      state.settingsAreLoaded = true;
-      state.configSettingsLoadingError = action.payload;
+    paymentProcessingError(state, action: PayloadAction<string>) {
+      state.isProcessing = false;
+      state.processingError = action.payload;
     },
     showPaymentModal(state) {
       state.paymentModalIsVisible = true;

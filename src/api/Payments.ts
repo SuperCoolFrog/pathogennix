@@ -1,5 +1,7 @@
 import InventoryItem from '../models/InventoryItem';
 import PaymentIntent from '../models/PaymentIntent';
+import ShoppingCartItem from '../models/ShoppingCartItem';
+import PaymentIntentResponse from '../models/PaymentIntentResponse';
 
 class PaymentsAPI {
   
@@ -11,13 +13,18 @@ class PaymentsAPI {
     this.externalAppKey = externalAppKey;
   }
   
-  public async placeOrder(): Promise<void> {
-    // const url = `${this.endpoint}/fetchInventoryItems`;
-    // const body = JSON.stringify({externalAppKey: this.externalAppKey});
-    // const response = await fetch(url, { method: 'POST', body });
-    // const inventoryJSON = await response.json();
-    // return inventoryJSON.map((jsonItem: any) => parseInventoryItem(jsonItem));
-    return Promise.resolve();
+  public async placeOrder(items: ShoppingCartItem[], billingAndShipping: string): Promise<PaymentIntentResponse> {
+    const url = `${this.endpoint}/createPaymentIntent`;
+    const body = JSON.stringify({
+      externalAppKey: this.externalAppKey,
+      items,
+      billingAndShipping,
+    });
+    const response = await fetch(url, { method: 'POST', body });
+
+    const placedOrderJSON = await response.json();
+
+    return placedOrderJSON as PaymentIntentResponse;
   }
 }
 

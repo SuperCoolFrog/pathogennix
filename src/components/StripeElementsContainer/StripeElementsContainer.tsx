@@ -8,7 +8,7 @@ import { getStripe, setStripe } from './StripeGlobalStore';
 import {
   Elements,
 } from '@stripe/react-stripe-js';
-
+import LoadingWithOverlay from '../../components/LoadingWithOverlay/LoadingWithOverlay';
 
 interface StripeElementsContainerProps {
   children: React.ReactElement;
@@ -49,8 +49,8 @@ const StripeElementsContainer = ({ children }: StripeElementsContainerProps) => 
     }
   }, [publishableStripeKey]);
   
-  if (!(stripeInstance && hasFetchedConfig)) {
-    return <>{children}</>;
+  if (!(stripeIsLoaded && hasFetchedConfig)) {
+    return <LoadingWithOverlay contained />;
   }
 
   return (<Elements stripe={stripeInstance}>
