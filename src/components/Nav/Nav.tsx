@@ -34,6 +34,9 @@ const Nav = ({
             <li onClick={navigateTo('/')} className={classNames({ [styles.selected]: isSegment('/')})}>
               Home
             </li>
+            <li onClick={navigateTo('/order')} className={classNames({ [styles.selected]: isSegment('/order')})}>
+              Order
+            </li>
           </ul>
         </nav>
       )}

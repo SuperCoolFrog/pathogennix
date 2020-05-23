@@ -8,6 +8,7 @@ import Checkout from '../pages/Checkout/Checkout';
 import BillingInfo from '../pages/BillingInfo/BillingInfo';
 import PaymentComplete from '../pages/PaymentComplete/PaymentComplete';
 import SearchResults from '../pages/SearchResults/SearchResults';
+import OrderSearch from '../pages/OrderSearch/OrderSearch';
 
 const Routes = () => (
   <Switch>
@@ -25,6 +26,7 @@ const Routes = () => (
     <Route path="/payment-complete" exact component={PaymentComplete} isPrivate />
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Route path="/search/:searchString" component={SearchResults} isPrivate />
+    <Route path="/order" exact component={OrderSearch} isPrivate />
     <Redirect to="/" />
   </Switch>
 );
