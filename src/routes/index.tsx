@@ -9,6 +9,7 @@ import BillingInfo from '../pages/BillingInfo/BillingInfo';
 import PaymentComplete from '../pages/PaymentComplete/PaymentComplete';
 import SearchResults from '../pages/SearchResults/SearchResults';
 import OrderSearch from '../pages/OrderSearch/OrderSearch';
+import OrderDetails from '../pages/OrderDetails/OrderDetails';
 
 const Routes = () => (
   <Switch>
@@ -27,6 +28,7 @@ const Routes = () => (
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Route path="/search/:searchString" component={SearchResults} isPrivate />
     <Route path="/order" exact component={OrderSearch} isPrivate />
+    <Route path="/order/:orderId" exact component={OrderDetails} isPrivate />
     <Redirect to="/" />
   </Switch>
 );

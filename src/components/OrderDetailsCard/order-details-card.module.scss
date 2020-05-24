@@ -1,0 +1,57 @@
+@import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
+
+.cardContainer {
+  background: $theme-white;
+}
+
+.header {
+  padding-left: 2em;
+  color: $theme-dark;
+}
+
+.contentContainer {
+  border-right: 1px solid $theme-gray;
+}
+
+.message {
+  padding-left: 2em;
+}
+
+.searchOuterContainer {
+  padding: 2em;
+}
+
+.searchBoxContainer {
+  background-color: $theme-gray;
+  border-radius: 4px;
+  // width: fit-content;
+  max-width: 500px;
+}
+
+.searchBoxGroup {
+  display: flex;
+  align-items: center;
+
+  input.searchBoxInput {
+    width: 100%;
+    color: $theme-black;
+    border-radius: 0;
+  }
+
+  label.searchBoxLabel {
+    color: $theme-black;
+    width: fit-content;
+    padding-left: 1em;
+    padding-right: .5em;
+    font-size: 14px;
+  }
+
+  .searchIconButton {
+    width: 40px;
+    color: $theme-primary;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+}

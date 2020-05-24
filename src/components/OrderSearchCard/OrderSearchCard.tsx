@@ -9,7 +9,7 @@ const PaymentCompleteCard = () => {
   
   const navigateToOrderDetails = () => {
     if (inputValue) {
-      history.push(`/order-details/${inputValue}`);
+      history.push(`/order/${inputValue}`);
     }
   };
   

@@ -35,7 +35,7 @@ const Nav = ({
               Home
             </li>
             <li onClick={navigateTo('/order')} className={classNames({ [styles.selected]: isSegment('/order')})}>
-              Order
+              Track Order
             </li>
           </ul>
         </nav>
