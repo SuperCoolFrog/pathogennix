@@ -7,6 +7,7 @@ import { fetchOrderDetails } from '../../store/orders/orders-thunks';
 import { ordersStateSelector }from '../../store/orders/orders-selector';
 import Loading from '../Loading/Loading';
 import WarningIcon from '../Icons/WarningIcon';
+import OrderDetailsContent from './components/OrderDetailsContent/OrderDetailsContent';
 
 interface OrderDetailsCardProps {
   orderId: string;
@@ -43,9 +44,11 @@ const OrderDetailsCard = ({ orderId }: OrderDetailsCardProps) => {
       </div>)}
       {(hasRequestedOrderDetails && !orderDetails.orderExists) && (<div className={styles.orderNotFoundContainer}>
         <span className={styles.warningIconContainer}><WarningIcon /></span>
-        <p>Could not find order matching that orderId.  Please confirm your orderId and try again.</p>
+        <p>Could not find order matching that orderId.  Please confirm your orderId and <a href="/order">try again</a>.</p>
       </div>)}
-      {(hasRequestedOrderDetails && orderDetails.orderExists) && <div>OrderState {orderDetails.orderState}</div>}
+      {(hasRequestedOrderDetails && orderDetails.orderExists) && (<div>
+        <OrderDetailsContent orderDetails={orderDetails} />
+      </div>)}
     </section>
   </section>);
 };
