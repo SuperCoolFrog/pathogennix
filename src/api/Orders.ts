@@ -19,8 +19,6 @@ class OrdersAPI {
     });
     const response = await fetch(url, { method: 'POST', body });
     
-    debugger;
-    
     if (response.status === 204) {
       // Could not find order matching that orderId
       return { orderExists: false } as OrderDetails;

@@ -8,50 +8,53 @@
 .header {
   padding-left: 2em;
   color: $theme-dark;
+  
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+  
+    .orderId {
+      font-weight: 600;
+    }
+  }
 }
 
 .contentContainer {
   border-right: 1px solid $theme-gray;
 }
 
-.message {
-  padding-left: 2em;
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  .loadingMessage {
+    color: $theme-dark;
+  }
 }
 
-.searchOuterContainer {
-  padding: 2em;
-}
-
-.searchBoxContainer {
-  background-color: $theme-gray;
-  border-radius: 4px;
-  // width: fit-content;
-  max-width: 500px;
-}
-
-.searchBoxGroup {
+.orderNotFoundContainer {
+  margin: 1em;
+  padding: .5em;
+  border: 2px solid $theme-accent;
+  border-radius: 5px;
+  background-color: lighten($theme-accent, 30%);
   display: flex;
   align-items: center;
-
-  input.searchBoxInput {
-    width: 100%;
-    color: $theme-black;
-    border-radius: 0;
+  
+  .warningIconContainer {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-left: 1em;
+    margin-right: 3.5em;
+    color: $theme-accent
   }
 
-  label.searchBoxLabel {
-    color: $theme-black;
-    width: fit-content;
-    padding-left: 1em;
-    padding-right: .5em;
-    font-size: 14px;
-  }
-
-  .searchIconButton {
-    width: 40px;
-    color: $theme-primary;
-    background: transparent;
-    border: none;
-    outline: none;
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
   }
 }
