@@ -4,18 +4,61 @@ import styles from './contact-us.module.scss';
 import Footer from '../../components/Footer/Footer';
 import HashMap from '../../models/HashMap';
 
-enum FormField {}
+enum FormField {
+  fullName = 'fullName',
+  email = 'email',
+  message = 'message',
+}
+
+const formFieldToString = (field: FormField): string => FormField[field];
+const stringToFormField = (fieldStr: string): FormField => {
+  switch (fieldStr) {
+    case FormField.fullName:
+      return FormField.fullName;
+    case FormField.email:
+      return FormField.email;
+    case FormField.message:
+      return FormField.message;
+    default:
+      throw new Error("Invalid field provided");
+  }
+};
 
 interface ContactUsState {
   isProcessing: boolean;
   form: HashMap<FormField, string>;
+  formErrors: HashMap<FormField, string>;
+  formIsValid: boolean;
 }
 
 const ContactUs = () => {
   const [state, updateState] = useState({
     isProcessing: false,
     form: new HashMap<FormField, string>(),
+    formErrors: new HashMap<FormField, string>(),
+    formIsValid: false,
   } as ContactUsState);
+  
+  const validateForm = () => {
+    const formErrors = new HashMap<FormField, string>();
+    let formIsValid = true;
+    const keys = [FormField.email, FormField.fullName, FormField.message];
+    
+    keys.forEach((key) => {
+      if(!state.form.get(key)) {
+        formIsValid = false;
+        formErrors.set(stringToFormField(key), "This field is required.");
+      }
+    });
+    
+    updateState({
+      ...state,
+      formErrors,
+      formIsValid,
+    });
+    
+    return formIsValid;
+  };
   
   const handleFieldChange = (field: FormField) => (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const updatedForm = state.form.clone();
@@ -28,6 +71,10 @@ const ContactUs = () => {
   
   const handleSubmit = (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
+    const isValid = validateForm();
+    if (isValid) {
+      console.log("FORM SUBMITTED", state.form.toJSONMap(formFieldToString));
+    }
   };
   
   return (<section className={"pure-g"}>
@@ -48,11 +95,21 @@ const ContactUs = () => {
               <fieldset>
                   <div className="pure-control-group">
                       <label htmlFor="fullName">Full Name</label>
-                      <input type="text" id="fullName" placeholder="Full Name" required />
+                      <input type="text" id="fullName" placeholder="Full Name" required
+                        onChange={handleFieldChange(FormField.fullName)}
+                      />
+                      { state.formErrors.get(FormField.fullName) && (
+                        <div className={classNames("pure-form-message-inline", styles.formError)}>{state.formErrors.get(FormField.fullName)}</div>
+                      )}
                   </div>
                   <div className="pure-control-group">
                       <label htmlFor="email">Email Address</label>
-                      <input type="email" id="email" placeholder="Email Address" required />
+                      <input type="email" id="email" placeholder="Email Address" required
+                        onChange={handleFieldChange(FormField.email)}
+                      />
+                      { state.formErrors.get(FormField.email) && (
+                        <div className={classNames("pure-form-message-inline", styles.formError)}>{state.formErrors.get(FormField.email)}</div>
+                      )}
                   </div>
                   <div className="pure-control-group">
                     <p className={styles.formHelperText}>
@@ -60,10 +117,17 @@ const ContactUs = () => {
                     </p>
                   </div>
                   <div className="pure-control-group">
-                    <textarea id="message" className={styles.messageTextArea} placeholder="Message" required></textarea>
+                    <textarea id="message" className={styles.messageTextArea} placeholder="Message" required
+                        onChange={handleFieldChange(FormField.message)}
+                    ></textarea>
+                    { state.formErrors.get(FormField.message) && (
+                        <div className={classNames("pure-form-message-inline", styles.formError)}>{state.formErrors.get(FormField.message)}</div>
+                    )}
                   </div>
                   <div className={classNames("pure-controls", styles.formActions)}>
-                    <button type="submit" className="pure-button pure-button-primary">Submit</button>
+                    <button type="submit" className="pure-button pure-button-primary"
+                      onClick={handleSubmit}
+                    >Submit</button>
                   </div>
               </fieldset>
             </form>
