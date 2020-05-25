@@ -33,9 +33,9 @@ const About = () => {
                 As a person who knows a lot of small business owners and as an owner myself, I know the importance of 
                 being able to open up shop.  After looking online at the usual places I purchase materials, I noticed that there
                 was a lot of price gouging and that there was very little regulations protecting customers. In order to protect oneself
-                and their employees, employers had only a few options.  They could either pay the marked up price for the protective gear,
-                or spend countless hours searching and maybe with a lot of luck be able to find the things they need at a fair price.  And since
-                protective gear does not last forever, the employer would need to do it again within a few weeks.
+                and their employees, employers had only a couple of options.  They could either pay the marked up price for the protective gear,
+                or spend countless hours searching and maybe with a lot of luck be able to find the things they need at a fair price.  And to make matters worse,
+                protective gear does not last forever so the employer would need to do it again within a few weeks.
               </p>
             </section>
             <section className={styles.contentQuote}>
