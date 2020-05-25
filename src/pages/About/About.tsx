@@ -23,7 +23,7 @@ const About = () => {
           <section className={styles.contentSection}>
             <header className={styles.contentHeader}>
               <h2>
-                <span className={styles.emph}>Easy Access,&nbsp;</span>
+                <span className={styles.emph}>One Location,&nbsp;</span>
                 <span className={styles.highlightRed}>No</span>
                 &nbsp;Price Gouging!
               </h2>

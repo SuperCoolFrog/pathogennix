@@ -11,11 +11,13 @@ import SearchResults from '../pages/SearchResults/SearchResults';
 import OrderSearch from '../pages/OrderSearch/OrderSearch';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
 import About from '../pages/About/About';
+import ContactUs from '../pages/ContactUs/ContactUs';
 
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Home} />
     <Route path="/about" exact component={About} />
+    <Route path="/contact" exact component={ContactUs} />
     <Route path="/checkout" exact component={Checkout} isPrivate />
     <Route path="/billing-info" exact component={BillingInfo} isPrivate />
     <Route path="/payment-complete" exact component={PaymentComplete} isPrivate />
