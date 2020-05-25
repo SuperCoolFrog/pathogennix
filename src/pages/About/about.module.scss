@@ -1,0 +1,64 @@
+@import "../../styles/theme.scss";
+
+.aboutContainer {
+  padding: 1em;
+  margin: auto;
+  max-width: 1200px;
+  min-height: 75vh;
+}
+
+.imageSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .imageContainer {
+    width: 80%;
+    text-align: center;
+
+    .image {
+      max-width: 100%;
+      height: 500px;
+    }
+  }
+}
+
+.cardContainer {
+  padding-bottom: 1em;
+  background: $theme-white;
+
+  .contentContainer {
+    border-right: 1px solid $theme-gray;
+  }
+}
+
+.contentSection {
+  width: 100%;
+
+  header {
+    h2 {
+      text-align: center;
+    }
+  }
+  
+  .contentText {
+    padding: 0 3em;
+    font-size: 18px;
+  }
+  
+  .contentQuote {
+    text-align: center;
+  }
+}
+
+.emph {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.highlightRed {
+  color: $redish;
+  font-weight: 600;
+}

@@ -10,18 +10,12 @@ import PaymentComplete from '../pages/PaymentComplete/PaymentComplete';
 import SearchResults from '../pages/SearchResults/SearchResults';
 import OrderSearch from '../pages/OrderSearch/OrderSearch';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
+import About from '../pages/About/About';
 
 const Routes = () => (
   <Switch>
-    {/**
-      <Route path="/" exact component={Home} isPrivate />
-      <Route path="/inventory" component={Inventory} isPrivate />
-      <Route path="/purchases" component={Purchases} isPrivate />
-      <Route path="/help" component={Help} isPrivate />
-      <Route path="/settings" component={Settings} isPrivate />
-      <Route path="/sign-in" component={SignIn} />
-   */}
-    <Route path="/" exact component={Home} isPrivate />
+    <Route path="/" exact component={Home} />
+    <Route path="/about" exact component={About} />
     <Route path="/checkout" exact component={Checkout} isPrivate />
     <Route path="/billing-info" exact component={BillingInfo} isPrivate />
     <Route path="/payment-complete" exact component={PaymentComplete} isPrivate />

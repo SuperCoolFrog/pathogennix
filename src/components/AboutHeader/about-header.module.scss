@@ -1,0 +1,14 @@
+@import "../../styles/theme.scss";
+
+.header {
+  h1 {
+    text-align: center;
+    
+    .pathongenText {
+      color: $theme-primary;
+    }
+    .nixText{
+      color: $redish;
+    }
+  }
+}

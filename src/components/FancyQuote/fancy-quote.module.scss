@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+
+/* Some vars */
+$background-color: hsl(50, 5, 97);
+$black: hsl(200, 40, 10);
+$white: $background-color;
+$base-font-size: 2.4em;
+$base-line-height: 1.5em;
+
+.blockquote {
+  position: relative;
+  font-family: 'Sanchez', serif;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  
+  .footer {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+    color: darken($white, 15%);
+    float: right;
+
+  }
+  
+  .openQuote {
+    font-size: 1.5em;
+    font-style: italic;
+    color: darken($white, 7%);
+  }
+  .closeQuote {
+    font-size: 1.5em;
+    font-style: italic;
+    color: darken($white, 7%);
+  }
+}
