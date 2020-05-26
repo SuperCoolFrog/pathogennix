@@ -1,6 +1,7 @@
 @import "../../styles/theme.scss";
 
 .contactUsContainer {
+  position: relative;
   padding: 1em;
   margin: auto;
   max-width: 1200px;
@@ -51,4 +52,8 @@
   .formError {
     color: $redish;
   }
+}
+
+.errorContainer {
+  margin: .5em 1em;
 }

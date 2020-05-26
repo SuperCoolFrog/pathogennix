@@ -1,0 +1,13 @@
+@import '../../styles/theme.scss';
+
+.successMessage {
+  margin: 1em;
+  padding: .5em;
+  border: 2px solid $theme-alt-secondary;
+  border-radius: 5px;
+  background-color: $theme-alt-primary;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}

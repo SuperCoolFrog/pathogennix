@@ -3,6 +3,11 @@ import classNames from 'classnames';
 import styles from './contact-us.module.scss';
 import Footer from '../../components/Footer/Footer';
 import HashMap from '../../models/HashMap';
+import api from '../../api'; 
+import ContactUsDetails from '../../models/ContactUsDetails';
+import LoadingWithOverlay from '../../components/LoadingWithOverlay/LoadingWithOverlay';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import SuccessCard from './components/SuccessCard';
 
 enum FormField {
   fullName = 'fullName',
@@ -29,6 +34,8 @@ interface ContactUsState {
   form: HashMap<FormField, string>;
   formErrors: HashMap<FormField, string>;
   formIsValid: boolean;
+  submissionError: string;
+  hasSubmitted: boolean;
 }
 
 const ContactUs = () => {
@@ -37,6 +44,7 @@ const ContactUs = () => {
     form: new HashMap<FormField, string>(),
     formErrors: new HashMap<FormField, string>(),
     formIsValid: false,
+    submissionError: '',
   } as ContactUsState);
   
   const validateForm = () => {
@@ -69,17 +77,42 @@ const ContactUs = () => {
     });
   }
   
-  const handleSubmit = (ev: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
     const isValid = validateForm();
     if (isValid) {
-      console.log("FORM SUBMITTED", state.form.toJSONMap(formFieldToString));
+      const form = state.form;
+      const contactUsDetails: ContactUsDetails = {
+        fullName: form.getWithDefault(FormField.fullName, ''),
+        email: form.getWithDefault(FormField.email, ''),
+        message: form.getWithDefault(FormField.message, ''),
+      }; 
+      
+      updateState({ ...state, isProcessing: true });
+      
+      try {
+        await api.contactUs.postContactUs(contactUsDetails);
+        updateState({ ...state, hasSubmitted: true, isProcessing: false });
+      } catch(e) {
+        updateState({
+          ...state,
+          isProcessing: false,
+          hasSubmitted: true,
+          submissionError: 'There was an error submitting your request.  Please try again later.'
+        });
+      }
+      
     }
   };
+  
+  if (state.hasSubmitted && !state.submissionError) {
+    return <SuccessCard />
+  }
   
   return (<section className={"pure-g"}>
     <div className={"pure-u-1"}>
       <div className={styles.contactUsContainer}>
+        { state.isProcessing && <LoadingWithOverlay contained />}
         <section className={classNames(styles.cardContainer)}>
           <header className={classNames("pure-u-1", styles.header)}>
             <h1>Contact Us</h1>
@@ -90,6 +123,11 @@ const ContactUs = () => {
               to contact us.
             </p>
           </section>
+          { (state.hasSubmitted && state.submissionError) && (
+            <div className={styles.errorContainer}>
+              <ErrorMessage message={state.submissionError} />
+            </div>
+          )}
           <section className={styles.formSection}>
             <form className="pure-form pure-form-aligned">
               <fieldset>
