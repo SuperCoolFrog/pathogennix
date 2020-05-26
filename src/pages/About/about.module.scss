@@ -1,4 +1,5 @@
 @import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
 
 .aboutContainer {
   padding: 1em;
@@ -20,7 +21,11 @@
 
     .image {
       max-width: 100%;
-      height: 500px;
+      height: auto;
+      
+      @include for-pure-md-width-up {
+        height: 500px;
+      }
     }
   }
 }

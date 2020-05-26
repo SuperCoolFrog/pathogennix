@@ -1,17 +1,24 @@
+@import "../../styles/media-breakpoints.scss";
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
 
 /* Some vars */
 $background-color: hsl(50, 5, 97);
 $black: hsl(200, 40, 10);
 $white: $background-color;
-$base-font-size: 2.4em;
 $base-line-height: 1.5em;
+
+$base-font-size-sm: 20px;
+$base-font-size-md: 2.4em;
 
 .blockquote {
   position: relative;
   font-family: 'Sanchez', serif;
-  font-size: $base-font-size;
+  font-size: $base-font-size-sm;
   line-height: $base-line-height;
+
+  @include for-pure-md-width-up {
+    font-size: $base-font-size-md;
+  }
   
   .footer {
     font-family: 'Noto Sans', sans-serif;

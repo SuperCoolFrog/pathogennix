@@ -12,7 +12,7 @@ const FancyQuote = ({ quoteText, quoteAuthor }: FancyQuoteProps) => {
     <blockquote className={classNames("groucho", styles.blockquote)}>
       <span className={styles.openQuote}>&ldquo;</span>
       <span className={styles.text}>{quoteText}</span>
-      <span className={styles.closeQuote}> &rdquo;</span>
+      <span className={styles.closeQuote}>&rdquo;</span>
       <footer className={styles.footer}>{quoteAuthor}</footer>
     </blockquote>
   );
