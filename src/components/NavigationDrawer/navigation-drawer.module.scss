@@ -1,3 +1,9 @@
+@import "../../styles/media-breakpoints.scss";
+
 .logoContainer {
+  margin-top: 1em; 
   
+  @include for-pure-md-width-up {
+    margin-top: 0;
+  }
 }
