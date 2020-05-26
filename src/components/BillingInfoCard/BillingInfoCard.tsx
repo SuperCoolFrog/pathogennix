@@ -12,6 +12,7 @@ import { configStateSelector } from '../../store/config/config-selector';
 import useStripeInstance from '../StripeElementsContainer/useStripeInstance';
 import paymentProcessingSlice from '../../store/payment-processing/payment-processing-slice';
 import { paymentProcessingFormSelector, paymentProcessingStateSelector } from '../../store/payment-processing/payment-processing-selector';
+import { orderComplete } from '../../store/payment-processing/payment-processing-thunks';
 import PaymentInfoFormField from '../../models/PaymentInfoFormField.enum';
 import api from '../../api';
 import {
@@ -63,7 +64,6 @@ const BillingInfoCard = () => {
 
     const {
       paymentIsProcessing,
-      paymentProcessingComplete,
       paymentProcessingError,
     } = paymentProcessingSlice.actions;
     const cardNumberElement = elements?.getElement(CardNumberElement);
@@ -92,7 +92,7 @@ const BillingInfoCard = () => {
         receipt_email: paymentInfoForm.get(PaymentInfoFormField.email),
       });
   
-      dispatch(paymentProcessingComplete(paymentIntentResponse.orderId));
+      dispatch(orderComplete(paymentIntentResponse.orderId));
     } catch(e) {
       dispatch(paymentProcessingError(e.message));
     }

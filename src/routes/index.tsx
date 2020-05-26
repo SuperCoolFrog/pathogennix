@@ -20,7 +20,7 @@ const Routes = () => (
     <Route path="/contact" exact component={ContactUs} />
     <Route path="/checkout" exact component={Checkout} isPrivate />
     <Route path="/billing-info" exact component={BillingInfo} isPrivate />
-    <Route path="/payment-complete" exact component={PaymentComplete} isPrivate />
+    <Route path="/payment-complete/:orderId" exact component={PaymentComplete} isPrivate />
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Route path="/search/:searchString" component={SearchResults} isPrivate />
     <Route path="/order" exact component={OrderSearch} isPrivate />

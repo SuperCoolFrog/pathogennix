@@ -55,7 +55,10 @@ const shoppingCartSlice = createSlice({
     },
     removeCartItem(state, action: PayloadAction<ItemId>) {
       state.cartItems = state.cartItems.filter(item => item.inventoryItem.itemId !== action.payload);
-    }
+    },
+    clearCart(state) {
+      state.cartItems = new Array<ShoppingCartItem>();
+    },
   }
 });
 
