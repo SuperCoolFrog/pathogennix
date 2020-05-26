@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { useHistory, useLocation } from "react-router-dom";
 import styles from './nav.module.scss';
+import navigationSlice from '../../store/navigation/navigation-slice';
 
 interface NavProps {
   children?: React.ReactNode;
@@ -14,11 +16,14 @@ const Nav = ({
 }: NavProps) => {
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const { closeDrawer } = navigationSlice.actions;
   
   const showLinks = !(HIDDEN_NAV_PATHNAMES.indexOf(location.pathname) > -1);
 
   const navigateTo = (path: string) => (ev: React.FormEvent) => {
     history.push(path);
+    dispatch(closeDrawer());
   };
   
   const isSegment = (segment: string) => {
