@@ -1,4 +1,5 @@
 @import "../../../../styles/theme.scss";
+@import "../../../../styles/media-breakpoints.scss";
 
 .itemDetailsContainer {
   padding: 1em;
@@ -43,14 +44,19 @@
 .subDetailsHeader {
   padding-left: 1em;
   // padding-bottom: 3.5em;
+  display: none;
+  @include for-pure-md-width-up {
+    display: block;
+  }
 }
 
 .actionsContainer {
-  padding-bottom: 1em;
-  // text-align: right;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  @include for-pure-md-width-up {
+    padding-bottom: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 
   .addToCart {
     margin-right: 1em;

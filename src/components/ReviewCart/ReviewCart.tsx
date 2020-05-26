@@ -28,7 +28,7 @@ const ReviewCart = () => {
         <h2>Review Cart</h2>
       </header>
       <div className={"pure-g"}>
-        <div className={"pure-u-2-3"}>
+        <div className={"pure-u-1 pure-u-md-2-3"}>
           <div className={styles.contentContainer}>
             {items.map(item => (
               <ItemDetailsRow cartItem={item} key={item.inventoryItem.itemId} />
@@ -36,7 +36,7 @@ const ReviewCart = () => {
             {!(items && items.length) && <p className={styles.noItems}>No Items have been added to your cart.</p>}
           </div>
         </div>
-        <div className={"pure-u-1-3"}>
+        <div className={"pure-u-1 pure-u-md-1-3"}>
           <div className={styles.actionsContainer}>
             <table className={styles.totalsTable}>
               <tbody>
