@@ -13,10 +13,10 @@ const AppHeader = () => {
         <div className={"pure-u"}>
           <TopNav segment="" />
         </div>
-        <div className={"pure-u-1-4"}>
+        <div className={"pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-4"}>
           <Logo />
         </div>
-        <div className={"pure-u-1-2"}>
+        <div className={"pure-u-1 pure-u-md-1-3 pure-u-md-1-2"}>
           <SearchBox />
         </div>
         <div className={"pure-u-1-6"}>
