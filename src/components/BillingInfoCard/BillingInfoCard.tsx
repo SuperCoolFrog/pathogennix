@@ -46,11 +46,11 @@ const BillingInfoCard = () => {
   } = useSelector(paymentProcessingStateSelector);
   const elements = useElements();
   const stripe = useStripe();
-  
+
   let subtotal = 0;
   let processingFee = 0;
   let shippingCost = 0;
-  
+
   if (items && items.length) {
     subtotal = items.reduce((t, cartItem) => {
       return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
@@ -61,7 +61,7 @@ const BillingInfoCard = () => {
     return <Redirect to="/checkout" />
   }
 
-  
+
   const handlePlaceOrderClick = async (ev: React.FormEvent<HTMLButtonElement>) => {
     ev.preventDefault();
 
@@ -71,9 +71,9 @@ const BillingInfoCard = () => {
     } = paymentProcessingSlice.actions;
     const cardNumberElement = elements?.getElement(CardNumberElement);
     const billingAndShippingJSON = JSON.stringify(paymentInfoForm.toJSONMap(formFieldKeyToString));
-    
+
     dispatch(paymentIsProcessing());
-  
+
     try {
       const paymentIntentResponse = await api.payments.placeOrder(items, billingAndShippingJSON);
 
@@ -94,25 +94,25 @@ const BillingInfoCard = () => {
         },
         receipt_email: paymentInfoForm.get(PaymentInfoFormField.email),
       });
-  
+
       dispatch(orderComplete(paymentIntentResponse.orderId));
-    } catch(e) {
+    } catch (e) {
       dispatch(paymentProcessingError(e.message));
     }
   };
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
-    { (isFetchingConfig || isLoadingStripe || isProcessing) && <LoadingWithOverlay contained />}
+    {(isFetchingConfig || isLoadingStripe || isProcessing) && <LoadingWithOverlay contained />}
     <section>
       <header className={styles.header}>
         <h2>Billing and Shipping</h2>
       </header>
-      { configFetchError && (
+      {configFetchError && (
         <div className={styles.errorContainer}>
           <ErrorMessage message={configFetchError} />
         </div>
       )}
-      { processingError && (
+      {processingError && (
         <div className={styles.errorContainer}>
           <ErrorMessage message={processingError} />
         </div>

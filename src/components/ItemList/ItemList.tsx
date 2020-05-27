@@ -16,7 +16,7 @@ const ItemList = ({ header, items, isLoading }: ItemListProps) => {
     <div className={styles.itemListContainer}>
       <div className={styles.itemsContainer}>
         { isLoading && <Loading />}
-        { items && items.length && items.map((item) => (
+        { items && !!items.length && items.map((item) => (
           <Card item={item} key={item.itemId} />
         ))}
       </div>
