@@ -7,6 +7,7 @@ import ShoppingCartItem from '../../models/ShoppingCartItem';
 import ItemDetailsRow from './components/ItemDetailsRow/ItemDetailsRow';
 import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-cart-selector';
 import { asPriceString } from '../../helpers/helpers';
+import { getProcessingFee, getShippingFee } from '../../helpers/fee-calculator';
 
 
 const ReviewCart = () => {
@@ -20,6 +21,8 @@ const ReviewCart = () => {
     subtotal = items.reduce((t, cartItem) => {
       return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
     }, 0);
+    processingFee = getProcessingFee(subtotal);
+    shippingCost = getShippingFee();
   }
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>

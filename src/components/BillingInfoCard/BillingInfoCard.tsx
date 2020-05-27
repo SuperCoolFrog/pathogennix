@@ -22,6 +22,7 @@ import {
   useElements,
   useStripe
 } from '@stripe/react-stripe-js';
+import { getProcessingFee, getShippingFee } from '../../helpers/fee-calculator';
 
 const formFieldKeyToString = (field: PaymentInfoFormField): string => {
   return PaymentInfoFormField[field];
@@ -54,6 +55,8 @@ const BillingInfoCard = () => {
     subtotal = items.reduce((t, cartItem) => {
       return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
     }, 0);
+    processingFee = getProcessingFee(subtotal);
+    shippingCost = getShippingFee();
   } else {
     return <Redirect to="/checkout" />
   }
