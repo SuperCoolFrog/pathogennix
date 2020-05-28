@@ -38,7 +38,6 @@ const LargeItemCard = ({ item }: LargeItemCardProps) => {
   
   const soldOut = item.quantity < 1;
   
-  
   return (<div className={styles.cardContainer}>
     <div className={styles.imageContainer}>
       <Link to={`/details/${item.itemId}`}>
