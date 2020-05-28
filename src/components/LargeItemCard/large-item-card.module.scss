@@ -1,13 +1,24 @@
-@import "../../../../styles/theme.scss";
+@import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
 
 .cardContainer {
-  margin: 0 .5em;
+  margin: .5em;
+  background-color: $theme-white;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .imageContainer {
   width: 130px;
   height: 100px;
   padding: 5px;
+  
+  @include for-pure-md-width-up {
+    width: 200px;
+    height: 154px;
+  }
 
   .image {
     width: 100%;
@@ -39,6 +50,7 @@
 .addToCartContainer {
    padding-top: 5px;
    text-align: center;
+   width: 100%;
 
   .addToCartButton {
     background: lighten($theme-accent, 10%);   

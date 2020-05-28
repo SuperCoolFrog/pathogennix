@@ -24,6 +24,10 @@ const shoppingCartSlice = createSlice({
     addCartItemQuantity(state, action: PayloadAction<ShoppingCartItem>) {
       const nuCartItem = action.payload;
       const existingCartItem = state.cartItems.find(item => item.inventoryItem.itemId === nuCartItem.inventoryItem.itemId);
+      
+      if (nuCartItem.inventoryItem.quantity < 1) {
+        return;
+      }
 
       if (existingCartItem) {
         existingCartItem.quantityToBuy += nuCartItem.quantityToBuy;
@@ -38,6 +42,10 @@ const shoppingCartSlice = createSlice({
     updateCartItemQuantity(state, action: PayloadAction<ShoppingCartItem>) {
       const nuCartItem = action.payload;
       const existingCartItem = state.cartItems.find(item => item.inventoryItem.itemId === nuCartItem.inventoryItem.itemId);
+
+      if (nuCartItem.inventoryItem.quantity < 1) {
+        return;
+      }
 
       if (existingCartItem) {
         existingCartItem.quantityToBuy = nuCartItem.quantityToBuy;

@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import styles from './item-list-card.module.scss';
-import InventoryItem from '../../../../models/InventoryItem';
-import { asPriceString } from '../../../../helpers/helpers';
-import shoppingCartSlice from '../../../../store/shopping-cart/shopping-cart-slice';
-import ShoppingCartItem from '../../../../models/ShoppingCartItem';
-import Loading from '../../../LoadingEllipsis/LoadingEllipsis';
+import styles from './large-item-card.module.scss';
+import Loading from '../LoadingEllipsis/LoadingEllipsis';
+import InventoryItem from '../../models/InventoryItem';
+import shoppingCartSlice from '../../store/shopping-cart/shopping-cart-slice';
+import ShoppingCartItem from '../../models/ShoppingCartItem';
+import { asPriceString } from '../../helpers/helpers';
 
-interface ItemListCardProps {
+interface LargeItemCardProps {
   item: InventoryItem;
+  isLoading: boolean;
 }
 
-const ItemListCard = ({ item }: ItemListCardProps) => {
+const LargeItemCard = ({ item }: LargeItemCardProps) => {
   const [displayLoading, setDisplayLoading] = useState(false);
   const dispatch = useDispatch();
   const {
@@ -34,8 +35,9 @@ const ItemListCard = ({ item }: ItemListCardProps) => {
       setDisplayLoading(false);
     }, 300);
   }; 
-
+  
   const soldOut = item.quantity < 1;
+  
   
   return (<div className={styles.cardContainer}>
     <div className={styles.imageContainer}>
@@ -61,4 +63,4 @@ const ItemListCard = ({ item }: ItemListCardProps) => {
   </div>);
 };
 
-export default ItemListCard;
+export default LargeItemCard;
