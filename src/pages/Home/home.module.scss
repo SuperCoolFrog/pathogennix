@@ -1,7 +1,9 @@
 @import "../../styles/theme.scss";
+@import "../../styles/media-breakpoints.scss";
 
 .homeContainer {
   min-height: 75vh;
+  padding-top: 1em;
 }
 
 .itemListContainer, .featuredItemsContainer {
@@ -11,5 +13,11 @@
 }
 
 .carouselContainer {
-  height: 300px;
+  height: 200px;
+  max-width: 1200px;
+  margin: auto;
+
+  @include for-pure-md-width-up {
+    height: 300px;
+  }
 }

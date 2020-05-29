@@ -8,7 +8,7 @@ import ItemList from '../../components/ItemList/ItemList';
 import Footer from '../../components/Footer/Footer';
 import InventoryItem from '../../models/InventoryItem';
 import LargeItemCard from '../../components/LargeItemCard/LargeItemCard';
-import Carousel from 're-carousel';
+import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
 
 const FEATURED_ITEM_IDS = [
   'OtEIPnFjy53LMqoWPJgk',
@@ -43,11 +43,7 @@ const Home = () => {
     <div className={classNames("pure-u-1", styles.homeContainer)}>
       <div className={"pure-g"}>
         <div className={classNames("pure-u-1", styles.carouselContainer)}>
-          <Carousel auto loop>
-            <div style={{backgroundColor: 'tomato', height: '100%'}}>Frame 1</div>
-            <div style={{backgroundColor: 'blue', height: '100%'}}>Frame 2</div>
-            <div style={{backgroundColor: 'green', height: '100%'}}>Frame 3</div>
-          </Carousel>
+          <HomeCarousel />
         </div>
         <div className={"pure-u-1"}>
           <div className={classNames("pure-u-g", styles.featuredItemsContainer)}>
