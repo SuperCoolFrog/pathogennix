@@ -48,8 +48,8 @@ const Home = () => {
         <div className={"pure-u-1"}>
           <div className={classNames("pure-u-g", styles.featuredItemsContainer)}>
             { featuredItems.map(featuredItem => (
-              <div className={"pure-u-1 pure-u-sm-1-2 pure-u-md-1-3"}>
-                  <LargeItemCard item={featuredItem} isLoading={isLoadingInventory} />
+              <div key={featuredItem.itemId} className={"pure-u-1 pure-u-sm-1-2 pure-u-md-1-3"}>
+                  <LargeItemCard key={featuredItem.itemId} item={featuredItem} isLoading={isLoadingInventory} />
               </div>
             ))}
           </div>

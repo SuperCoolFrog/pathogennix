@@ -55,8 +55,10 @@ const BillingInfoCard = () => {
     subtotal = items.reduce((t, cartItem) => {
       return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
     }, 0);
-    processingFee = getProcessingFee(subtotal);
-    shippingCost = getShippingFee();
+    shippingCost = items.reduce((t, cartItem) => {
+      return t + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
+    }, 0);
+    processingFee = getProcessingFee(subtotal + shippingCost);
   } else {
     return <Redirect to="/checkout" />
   }

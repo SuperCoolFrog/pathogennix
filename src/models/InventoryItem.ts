@@ -4,11 +4,13 @@ interface InventoryItem {
   SKU: string;
   active: boolean;
   category: string
-  created: Date;
+  created: string;
   imageSrc: string;
   price: number;
   quantity: number;
   description: string;
+  shippingCost: number;
+  shippingDateModifierDays: number;
 }
 
 export const parseInventoryItem = (json: any) => {
@@ -18,11 +20,13 @@ export const parseInventoryItem = (json: any) => {
     SKU: json.sku,
     active: json.active,
     category: json.category || '',
-    created: new Date(json.created._seconds * 1000),
+    created: json.created,
     imageSrc: json.imageSrc,
     price: parseFloat(json.price),
     quantity: parseInt(json.quantity),
     description: json.description || '',
+    shippingCost: parseInt(json.shippingCost),
+    shippingDateModifierDays: parseInt(json.shippingDateModifierDays),
   };
   return item as InventoryItem;
 };

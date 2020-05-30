@@ -51,13 +51,6 @@
 }
 
 .actionsContainer {
-  @include for-pure-md-width-up {
-    padding-bottom: 1em;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
   .addToCart {
     margin-right: 1em;
     background-color: $theme-accent; 
