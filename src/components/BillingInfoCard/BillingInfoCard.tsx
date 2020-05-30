@@ -23,6 +23,8 @@ import {
   useStripe
 } from '@stripe/react-stripe-js';
 import { getProcessingFee, getShippingFee } from '../../helpers/fee-calculator';
+import addDays from 'date-fns/fp/addDays';
+import { format } from 'date-fns';
 
 const formFieldKeyToString = (field: PaymentInfoFormField): string => {
   return PaymentInfoFormField[field];
@@ -50,15 +52,20 @@ const BillingInfoCard = () => {
   let subtotal = 0;
   let processingFee = 0;
   let shippingCost = 0;
-
-  if (items && items.length) {
-    subtotal = items.reduce((t, cartItem) => {
-      return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
-    }, 0);
-    shippingCost = items.reduce((t, cartItem) => {
-      return t + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
-    }, 0);
+  let estimatedShippingDateMod = 0;
+  let estimatedShippingDate;
+  
+  if (items) {
+    items.forEach((cartItem) => {
+      subtotal = subtotal  + cartItem.inventoryItem.price * cartItem.quantityToBuy;
+      shippingCost = shippingCost + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
+      if (estimatedShippingDateMod < cartItem.inventoryItem.shippingDateModifierDays) {
+       estimatedShippingDateMod = cartItem.inventoryItem.shippingDateModifierDays;
+      }
+    });
     processingFee = getProcessingFee(subtotal + shippingCost);
+    const tmpDate = new Date();
+    estimatedShippingDate = format(addDays(estimatedShippingDateMod, tmpDate), 'MMMM d');
   } else {
     return <Redirect to="/checkout" />
   }
@@ -142,6 +149,10 @@ const BillingInfoCard = () => {
                 <td>Shipping</td>
                 <td>${asPriceString(shippingCost)}</td>
               </tr>
+                <tr>
+                  <td>Ships</td>
+                  <td><em>{estimatedShippingDate}</em></td>
+                </tr>
             </tbody>
           </table>
           <div className={styles.totalContainer}>

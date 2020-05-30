@@ -8,6 +8,8 @@ import ItemDetailsRow from './components/ItemDetailsRow/ItemDetailsRow';
 import { shoppingCartItemsSelector } from '../../store/shopping-cart/shopping-cart-selector';
 import { asPriceString } from '../../helpers/helpers';
 import { getProcessingFee, getShippingFee } from '../../helpers/fee-calculator';
+import addDays from 'date-fns/fp/addDays';
+import { format } from 'date-fns';
 
 
 const ReviewCart = () => {
@@ -16,16 +18,23 @@ const ReviewCart = () => {
   let subtotal = 0;
   let processingFee = 0;
   let shippingCost = 0;
+  let estimatedShippingDateMod = 0;
+  let estimatedShippingDate;
   
   if (items) {
-    subtotal = items.reduce((t, cartItem) => {
-      return t + cartItem.inventoryItem.price * cartItem.quantityToBuy;
-    }, 0);
-    shippingCost = items.reduce((t, cartItem) => {
-      return t + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
-    }, 0);
+    items.forEach((cartItem) => {
+      subtotal = subtotal  + cartItem.inventoryItem.price * cartItem.quantityToBuy;
+      shippingCost = shippingCost + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
+      if (estimatedShippingDateMod < cartItem.inventoryItem.shippingDateModifierDays) {
+       estimatedShippingDateMod = cartItem.inventoryItem.shippingDateModifierDays;
+      }
+    });
     processingFee = getProcessingFee(subtotal + shippingCost);
+    const tmpDate = new Date();
+    estimatedShippingDate = format(addDays(estimatedShippingDateMod, tmpDate), 'MMMM d');
   }
+  
+  
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
     <section className={styles.reviewCartContainer}>
@@ -56,6 +65,10 @@ const ReviewCart = () => {
                 <tr>
                   <td>Shipping</td>
                   <td>${asPriceString(shippingCost)}</td>
+                </tr>
+                <tr>
+                  <td>Ships</td>
+                  <td><em>{estimatedShippingDate}</em></td>
                 </tr>
               </tbody>
             </table>
