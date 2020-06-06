@@ -34,6 +34,12 @@ const ReviewCart = () => {
     estimatedShippingDate = format(addDays(estimatedShippingDateMod, tmpDate), 'MMMM d');
   }
   
+  const handleLinkClick = (ev: React.FormEvent) => {
+    if (!(items && items.length)) {
+      ev.preventDefault();
+    }
+  }; 
+  
   
 
   return (<section className={classNames("pure-u-1", styles.cardContainer)}>
@@ -77,7 +83,7 @@ const ReviewCart = () => {
               <span className={styles.total}>${asPriceString(subtotal + processingFee + shippingCost)}</span>
             </div>
             <div className={styles.billingButtonContainer}>
-              <Link to="/billing-info" className={styles.billingButton}>Proceed to Payment</Link>
+              <Link to="/billing-info" className={styles.billingButton} onClick={handleLinkClick}>Proceed to Payment</Link>
             </div>
           </div>
         </div>

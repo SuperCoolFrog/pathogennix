@@ -55,7 +55,7 @@ const BillingInfoCard = () => {
   let estimatedShippingDateMod = 0;
   let estimatedShippingDate;
   
-  if (items) {
+  if (items &&  items.length) {
     items.forEach((cartItem) => {
       subtotal = subtotal  + cartItem.inventoryItem.price * cartItem.quantityToBuy;
       shippingCost = shippingCost + cartItem.inventoryItem.shippingCost * cartItem.quantityToBuy;
