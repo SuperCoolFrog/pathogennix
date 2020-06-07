@@ -11,9 +11,9 @@ import LargeItemCard from '../../components/LargeItemCard/LargeItemCard';
 import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
 
 const FEATURED_ITEM_IDS = [
-  'OtEIPnFjy53LMqoWPJgk',
-  'OtEIPnFjy53LMqoWPJgk',
-  'OtEIPnFjy53LMqoWPJgk',
+  'zEYhvyRYBkfD3pRTTnYZ',
+  'j9Fd7CUFZvMNh6HyCqEr',
+  '4ihnjBBJ6GMFEwks6rOU',
 ];
 
 const Home = () => {
