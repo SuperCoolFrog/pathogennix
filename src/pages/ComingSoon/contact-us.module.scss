@@ -1,0 +1,59 @@
+@import "../../styles/theme.scss";
+
+.contactUsContainer {
+  position: relative;
+  padding: 1em;
+  margin: auto;
+  max-width: 1200px;
+  min-height: 75vh;
+
+  .header {
+    h1 {
+      text-align: center;
+      color: $theme-dark;
+    }
+  }
+
+  .cardContainer {
+    padding-bottom: 1em;
+    background: $theme-white;
+  }
+}
+
+.textSection {
+  p {
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.formSection {
+  margin: 1em;
+  padding: .5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid $theme-gray;
+  border-radius: 5px;
+  
+  .formHelperText {
+    font-weight: 600;
+  }
+
+  .messageTextArea {
+    width: 100%; 
+    min-height: 300px;
+  }
+  
+  .formActions {
+    text-align: right;
+  }
+  
+  .formError {
+    color: $redish;
+  }
+}
+
+.errorContainer {
+  margin: .5em 1em;
+}

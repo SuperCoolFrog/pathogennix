@@ -12,9 +12,11 @@ import OrderSearch from '../pages/OrderSearch/OrderSearch';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
 import About from '../pages/About/About';
 import ContactUs from '../pages/ContactUs/ContactUs';
+import ComingSoon from '../pages/ComingSoon/ContactUs';
 
 const Routes = () => (
   <Switch>
+    <Route path="/" component={ComingSoon} />
     <Route path="/" exact component={Home} />
     <Route path="/about" exact component={About} />
     <Route path="/contact" exact component={ContactUs} />
