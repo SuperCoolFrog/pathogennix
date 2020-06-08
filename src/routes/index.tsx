@@ -16,12 +16,11 @@ import ComingSoon from '../pages/ComingSoon/ContactUs';
 
 const Routes = () => (
   <Switch>
-    <Route path="/" component={ComingSoon} />
     <Route path="/" exact component={Home} />
     <Route path="/about" exact component={About} />
     <Route path="/contact" exact component={ContactUs} />
     <Route path="/checkout" exact component={Checkout} isPrivate />
-    <Route path="/billing-info" exact component={BillingInfo} isPrivate />
+    <Route path="/billing-info" component={ComingSoon} />
     <Route path="/payment-complete/:orderId" exact component={PaymentComplete} isPrivate />
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Route path="/search/:searchString" component={SearchResults} isPrivate />

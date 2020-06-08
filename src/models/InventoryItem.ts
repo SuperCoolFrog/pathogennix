@@ -25,7 +25,7 @@ export const parseInventoryItem = (json: any) => {
     price: parseFloat(json.price),
     quantity: parseInt(json.quantity),
     description: json.description || '',
-    shippingCost: parseInt(json.shippingCost),
+    shippingCost: parseFloat(json.shippingCost),
     shippingDateModifierDays: parseInt(json.shippingDateModifierDays),
   };
   return item as InventoryItem;
