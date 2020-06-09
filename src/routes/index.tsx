@@ -12,7 +12,6 @@ import OrderSearch from '../pages/OrderSearch/OrderSearch';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
 import About from '../pages/About/About';
 import ContactUs from '../pages/ContactUs/ContactUs';
-import ComingSoon from '../pages/ComingSoon/ContactUs';
 
 const Routes = () => (
   <Switch>
@@ -20,7 +19,7 @@ const Routes = () => (
     <Route path="/about" exact component={About} />
     <Route path="/contact" exact component={ContactUs} />
     <Route path="/checkout" exact component={Checkout} isPrivate />
-    <Route path="/billing-info" component={ComingSoon} />
+    <Route path="/billing-info" component={BillingInfo} />
     <Route path="/payment-complete/:orderId" exact component={PaymentComplete} isPrivate />
     <Route path="/details/:itemId" component={Details} isPrivate />
     <Route path="/search/:searchString" component={SearchResults} isPrivate />
