@@ -13,6 +13,7 @@
 
 .imageContainer {
   padding: 1em;
+  cursor: pointer;
   
   img {
     width: 100%;
@@ -94,4 +95,8 @@
 
 .description {
   white-space: pre-line;
+}
+
+.price {
+  color: $redish;
 }

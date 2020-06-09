@@ -9,6 +9,7 @@ import { getItems } from '../../store/inventory/inventory-thunks';
 import ShoppingCartItem from '../../models/ShoppingCartItem';
 import shoppingCartSlice from '../../store/shopping-cart/shopping-cart-slice';
 import Loading from '../../components/LoadingEllipsis/LoadingEllipsis';
+import { asPriceString } from '../../helpers/helpers';
 
 const Details = () => {
   const { itemId } = useParams();
@@ -53,14 +54,17 @@ const Details = () => {
       setShowLoading(false);
     }, 300);
   };
-
+  
+  const openImage = () => {
+    window.open(item.imageSrc,'_blank');
+  };
 
   return (<section className={"pure-g"}>
     <div className={"pure-u-1"}>
       <div className={styles.detailsContainer}>
         <div className={classNames("pure-g", styles.detailsCard)}>
           <div className="pure-u-1 pure-u-md-1-2">
-            <div className={styles.imageContainer}>
+            <div className={styles.imageContainer} onClick={openImage}>
               <img src={item?.imageSrc} alt={item?.itemName} className="pure-img" />
             </div>
           </div>
@@ -74,6 +78,7 @@ const Details = () => {
                 : (<div className={styles.outOfStockText}>Out of Stock</div>)
               }
               <hr />
+              <p className={styles.price}>${asPriceString(item?.price)}</p>
               <p className={styles.description}>{item?.description}</p>
             </section>
             <section className={styles.actionsContainer}>
