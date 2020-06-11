@@ -9,12 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import InventoryItem from '../../models/InventoryItem';
 import LargeItemCard from '../../components/LargeItemCard/LargeItemCard';
 import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
-
-const FEATURED_ITEM_IDS = [
-  'zEYhvyRYBkfD3pRTTnYZ',
-  'j9Fd7CUFZvMNh6HyCqEr',
-  '4ihnjBBJ6GMFEwks6rOU',
-];
+import Loading from '../../components/Loading/Loading';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,15 +24,6 @@ const Home = () => {
       dispatch(getItems());
     }
   }, []); 
-  
-  // never will be undefined because of filter, but need to make typescript happy
-  let featuredItems: InventoryItem[] = [];
-
-  if (hasFetchedInventory) {
-    featuredItems = FEATURED_ITEM_IDS
-      .map(itemId => inventoryItems.find(item => item.itemId === itemId))
-      .filter(item => item) as InventoryItem[];
-  }
 
   return (<section className={"pure-g"}>
     <div className={classNames("pure-u-1", styles.homeContainer)}>
@@ -47,16 +33,12 @@ const Home = () => {
         </div>
         <div className={"pure-u-1"}>
           <div className={classNames("pure-u-g", styles.featuredItemsContainer)}>
-            { featuredItems.map(featuredItem => (
+            {inventoryItems && inventoryItems.map(featuredItem => (
               <div key={featuredItem.itemId} className={"pure-u-1 pure-u-sm-1-2 pure-u-md-1-3"}>
                   <LargeItemCard key={featuredItem.itemId} item={featuredItem} isLoading={isLoadingInventory} />
               </div>
             ))}
-          </div>
-        </div>
-        <div className={"pure-u-1"}>
-          <div className={styles.itemListContainer}>
-            <ItemList header="All Products" items={inventoryItems} isLoading={isLoadingInventory} />
+            {!inventoryItems && <div className={styles.loadingContainer}><Loading /></div>}
           </div>
         </div>
       </div>
