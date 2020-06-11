@@ -16,6 +16,9 @@
   &.cardBg4 {
     background: linear-gradient(135deg, $color2, $color4);
   }
+  &.cardBg5 {
+    background: linear-gradient(to right, rgb(240, 179, 48), rgb(237, 181, 49), rgb(234, 183, 50), rgb(231, 185, 51), rgb(228, 187, 52), rgb(225, 189, 53), rgb(222, 192, 55), rgb(219, 194, 56), rgb(216, 196, 57), rgb(213, 198, 58), rgb(210, 200, 59), rgb(207, 202, 60));
+  }
 }
 
 .detailsContainer {
@@ -33,6 +36,9 @@
   }
   &.bg4 {
     background: linear-gradient(135deg, $color2, $color4);
+  }
+  &.bg5 {
+    background: linear-gradient(to right, rgb(240, 179, 48), rgb(237, 181, 49), rgb(234, 183, 50), rgb(231, 185, 51), rgb(228, 187, 52), rgb(225, 189, 53), rgb(222, 192, 55), rgb(219, 194, 56), rgb(216, 196, 57), rgb(213, 198, 58), rgb(210, 200, 59), rgb(207, 202, 60));
   }
 
   @include for-pure-md-width-up {

@@ -5,6 +5,11 @@ import CarouselCard from './components/CarouselCard/CarouselCard';
 const HomeCarousel = () => {
   return (
     <Carousel auto loop interval={7000}>
+      <CarouselCard headerText="Same Day Local Deliveries"
+        bodyText="Deliveries local to Allentown, PA will be delivered within 24hrs"
+        imageSrc="/images/same-day-delivery.jpg"
+        bg5
+      />
       <CarouselCard headerText="Protective Gear to Protect Yourself and Others"
         bodyText="We take care of the searching for the things you need for yourself and your business"
         imageSrc="/images/protection.jpg"

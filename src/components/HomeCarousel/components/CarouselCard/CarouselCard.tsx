@@ -10,6 +10,7 @@ interface CarouselCardProps {
   bg2?: boolean;
   bg3?: boolean;
   bg4?: boolean;
+  bg5?: boolean;
 }
 
 const CarouselCard = ({
@@ -20,6 +21,7 @@ const CarouselCard = ({
   bg2,
   bg3,
   bg4,
+  bg5,
 }: CarouselCardProps) => {
   
   const cardBgStyle = {
@@ -27,12 +29,14 @@ const CarouselCard = ({
     [styles.cardBg2]: bg2,
     [styles.cardBg3]: bg3,
     [styles.cardBg4]: bg4,
+    [styles.cardBg5]: bg5,
   };
   const bgStyle = {
     [styles.bg1]: bg1,
     [styles.bg2]: bg2,
     [styles.bg3]: bg3,
     [styles.bg4]: bg4,
+    [styles.bg5]: bg5,
   };
   
   return (<div className={classNames(styles.cardContainer, cardBgStyle)}>
